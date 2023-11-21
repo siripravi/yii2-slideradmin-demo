@@ -2,12 +2,11 @@
     <a href="https://github.com/yiisoft" target="_blank">
         <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
     </a>
-    <h1 align="center">Yii 2 Basic Project Template</h1>
+    <h1 align="center">Yii 2 Slider Admin Template</h1>
     <br>
 </p>
 
-Yii 2 Basic Project Template is a skeleton [Yii 2](https://www.yiiframework.com/) application best for
-rapidly creating small projects.
+This project is an application template built with Yii 2 Basic Project Template [Yii 2](https://www.yiiframework.com/].
 
 The template contains the basic features including user login/logout and a contact page.
 It includes all commonly used configurations that would allow you to focus on adding new
@@ -48,8 +47,10 @@ INSTALLATION
 If you do not have [Composer](https://getcomposer.org/), you may install it by following the instructions
 at [getcomposer.org](https://getcomposer.org/doc/00-intro.md#installation-nix).
 
-You can then install this project template using the following command:
-
+You can then install this project template using the following instructions:
+1. Clone this repository using the command:
+   ~~~
+   git clone 
 ~~~
 composer create-project --prefer-dist yiisoft/yii2-app-basic basic
 ~~~
