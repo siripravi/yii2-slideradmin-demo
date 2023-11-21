@@ -36,7 +36,7 @@ You can then install this project template using the following instructions:
    cd yii2-slideradmin-demo
    composer update
    ~~~
-3. Specify the Database connection details in the file located at "config/db.php". And run the command:
+3. Specify the Database connection details in the file located at `config/db.php`. And run the command:
    ~~~
    php yii migrate --migrationPath="@vendor/siripravi/yii2-slideradmin/migrations"
    ~~~
