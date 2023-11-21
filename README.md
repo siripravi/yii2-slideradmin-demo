@@ -23,9 +23,6 @@ The minimum requirement by this project template that your Web server supports P
 
 INSTALLATION
 ------------
-
-### Install via Composer
-
 If you do not have [Composer](https://getcomposer.org/), you may install it by following the instructions
 at [getcomposer.org](https://getcomposer.org/doc/00-intro.md#installation-nix).
 
