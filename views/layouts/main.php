@@ -28,7 +28,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     <?php $this->head() ?>
 </head>
 
-<body class="d-flex flex-column h-100">
+<body class="d-flex flex-column h-100" data-bs-theme="dark">
     <?php $this->beginBody() ?>
 
     <header id="header">
@@ -67,7 +67,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
        
     </header>
 
-    <main id="main" class="flex-shrink-0" role="main">
+    <main id="main" class="flex-shrink-0" role="main" style="margin-top:123px;">
         <div class="container">
             <?php if (!empty($this->params['breadcrumbs'])) : ?>
                 <?= Breadcrumbs::widget(['links' => $this->params['breadcrumbs']]) ?>
