@@ -30,7 +30,7 @@ JS) ?>
             <div class="d-flex justify-content-between align-items-center">
                 <div class="logo">
                     <a href="<?= '/admin' ?>">
-                        Admin
+                        SliderAdmin
                     </a>
                 </div>
                 <div class="theme-toggle d-flex gap-2 align-items-center mt-2">
@@ -46,14 +46,79 @@ JS) ?>
                 </div>
             </div>
         </div>
-        
+        <div class="sidebar-menu">
+			<ul class="menu">
+				<li class="sidebar-item active">
+					<a href="<?= Url::toRoute(['/site/index']) ?>" class="sidebar-link">
+						<i class="bi bi-grid-fill"></i>
+						<span>Dashboard</span>
+					</a>
+				</li>
+
+				<li class="sidebar-item has-sub">
+					<a href="#" class="sidebar-link">
+						<i class="bi bi-grid-1x2-fill"></i>
+						<span>Layouts</span>
+					</a>
+					<ul class="submenu">
+						<li class="submenu-item">
+							<a href="?layout=mainy" class="submenu-link">Vertical Navbar</a>
+						</li>
+						<li class="submenu-item">
+							<a href="?layout=mainx" class="submenu-link">Horizontal Menu</a>
+						</li>
+
+						<li class="submenu-item">
+							<a href="<?= Url::current(['layout' => 'auth', 'render' => '/auth/login']) ?>" class="submenu-link">LogIn</a>
+						</li>
+						<li class="submenu-item">
+							<a href="<?= Url::current(['layout' => 'auth', 'render' => '/auth/signup']) ?>" class="submenu-link">SignUp</a>
+						</li>
+						<li class="submenu-item">
+							<a href="<?= Url::current(['layout' => 'auth', 'render' => '/auth/forgot_password']) ?>" class="submenu-link">Forgot Password</a>
+						</li>
+						<li class="submenu-item">
+							<a href="<?= Url::current(['layout' => 'auth', 'render' => '/auth/reset_password']) ?>" class="submenu-link">Reset Password</a>
+						</li>
+					</ul>
+				</li>
+
+				<li class="sidebar-title">Raise Support</li>
+
+				<li class="sidebar-item">
+					<a href="https://zuramai.github.io/mazer/docs" class="sidebar-link" target="_blank">
+						<i class="bi bi-life-preserver"></i>
+						<span>Documentation</span>
+					</a>
+				</li>
+
+				<li class="sidebar-item">
+					<a href="https://github.com/zuramai/mazer/blob/main/CONTRIBUTING.md" class="sidebar-link" target="_blank">
+						<i class="bi bi-puzzle"></i>
+						<span>Contribute</span>
+					</a>
+				</li>
+
+				<li class="sidebar-item">
+					<a href="https://github.com/zuramai/mazer#donation" class="sidebar-link" target="_blank">
+						<i class="bi bi-cash"></i>
+						<span>Donate</span>
+					</a>
+				</li>
+			</ul>
+		</div>
         <div class="sidebar-menu">
             <?php
             echo \yii\bootstrap5\Nav::widget([
                 'options' => ['class' => 'menu'],
                 'encodeLabels' => false,              
                 'items' => [
-                    "<li class='sidebar-title'>Slider Admin<li>",
+                    "<li class='idebar-item active'>
+					<a href='",Url::toRoute(['/site/index'])."' class='sidebar-link'>
+						<i class='bi bi-grid-fill'></i>
+						<span>Dashboard</span>
+					</a>
+				</li>",
                     [
                         'label' => '<i class="bi bi-card-text"></i><span>Slider</span>',
                         'url' => ['/admin/slider'],
