@@ -10,6 +10,7 @@ use siripravi\slideradmin\models\Slider;
 use siripravi\slideradmin\models\SliderImage;
 use yii\bootstrap5\Html;
 use app\widgets\Carousel;
+use iutbay\yii2pnotify\PNotify;
 
 $this->title = 'My Yii Application';
 
@@ -30,6 +31,15 @@ foreach ($slides as $sld) {
         ];
     }
 }
+?>
+<?php
+echo PNotify::widget([
+    "title" => "Welcome to SliderAdmin Demo Site!",
+    "type" => "",
+    "text" => "Awesome Sliders based on Bootstrap 5",
+    //"notifications" => ["welcome"]
+]
+);
 ?>
 <div class="site-index">
     <?php

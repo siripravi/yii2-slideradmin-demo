@@ -1,0 +1,43 @@
+
+	
+<div id="t626c5">
+<span>Text:</span><br />
+
+<input id="text" type="text" name="text" value="Pro V Digital Services">
+<br />
+<div style="opacity:0;display:none">
+<span>Ellipse center x y:</span><br />
+
+<input id="center_x_slider" type="range" min="0" max="100" step="1" value="70">
+<input id="centerX" type="number" min="0" max="100" name="centerX" value="100">
+<br />
+
+<input id="center_y_slider" type="range" min="0" max="100" step="1" value="70">
+<input id="centerY" type="number" min="0" max="100" name="centerY" value="70">
+<br />
+</div>
+<span>Major/minor radius:</span><br />
+<input id="rx_slider" type="range" min="0" max="100" step="1" value="50">
+<input id="rx" type="number" min="0" max="100" name="rx" value="50">
+<br />
+
+<input id="ry_slider" type="range" min="0" max="100" step="1" value="50">
+<input id="ry" type="number" min="0" max="100" name="ry" value="50">
+<br />
+
+<span>Start angle and sweep:</span><br />
+<div style="opacity:0;display:none">
+<input id="sweepStart_slider" type="range" min="0" max="359" step="2" value="0">
+<input id="sweepStart" type="number" min="0" max="359" name="sweepStart" value="0">
+<br />
+</div>
+<input id="sweepDelta_slider" type="range" min="0" max="359" step="2" value="340">
+<input id="sweepDelta" type="number" min="0" max="359" name="sweepDelta" value="340">
+<br />
+
+<label for="rot">Rotation:</label><br />
+<input id="rot_slider" type="range" min="0" max="359" step="2" value="0">
+<input id="rot" type="number" min="0" max="359" name="rot" value="0">
+
+</div>
+  
