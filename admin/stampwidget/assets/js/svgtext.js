@@ -1,54 +1,46 @@
-
-
-
 (function ($) {
-    'use strict';
-    var canvas = document.getElementById('RoundText');  	
-    new SvgEditor(canvas, 250, 250);	
+  "use strict";
+  var canvas = document.getElementById("RoundText");
+  new SvgEditor(canvas, 250, 250);
 
-    let Modal,
-        modalBody,
-        reload_container_id,
-        settings;
+  let Modal, modalBody, reload_container_id, settings;
 
-    $. ajaxCreate = function (options) {
-        settings = $. extend(settings, options);
+  $.ajaxCreate = function (options) {
+    settings = $.extend(settings, options);
 
-        Modal = $(settings. modal. container);
-        modalBody = Modal. find('.modal-body');
+    Modal = $(settings.modal.container);
+    modalBody = Modal.find(".modal-body");
 
-        Modal. on('beforeSubmit', 'form', eventSubmit);
-		
-		
-        $(document). on('click', '[data-href]', eventClick);
-    };
+    Modal.on("beforeSubmit", "form", eventSubmit);
 
-    function renderModal(content) {
-        if (content. length) {
-            modalBody. html(content);
-            Modal. modal('show');
-        }
-        return content. length !== 0;
+    $(document).on("click", "[data-href]", eventClick);
+  };
+
+  function renderModal(content) {
+    if (content.length) {
+      modalBody.html(content);
+      Modal.modal("show");
     }
+    return content.length !== 0;
+  }
 
-    function getContainer(e) {
-        let container = $(e). closest('.pjax-box');
-        if (container === undefined) {
-            container = $('.pjax-box:eq(0)');
-        }
-        return container. attr('id');
+  function getContainer(e) {
+    let container = $(e).closest(".pjax-box");
+    if (container === undefined) {
+      container = $(".pjax-box:eq(0)");
     }
+    return container.attr("id");
+  }
 
-    function reloadContainer() {
-        if (reload_container_id !== undefined) {
-            $. pjax. reload('#' + reload_container_id, settings. pjax. options);
-        }
+  function reloadContainer() {
+    if (reload_container_id !== undefined) {
+      $.pjax.reload("#" + reload_container_id, settings.pjax.options);
     }
+  }
 
-    function eventClick(e) {
-		
-		$('form#dynamic-form111').submit();
-		/*$(".comment-form").submit(function(event) {
+  function eventClick(e) {
+    $("form#dynamic-form111").submit();
+    /*$(".comment-form").submit(function(event) {
             event.preventDefault(); // stopping submitting
             var data = $(this).serializeArray();
             var url = $(this).attr('action');
@@ -68,40 +60,71 @@
             });
         
         });*/
-        e. preventDefault();
-        reload_container_id = getContainer(e. target);
+    e.preventDefault();
+    reload_container_id = getContainer(e.target);
 
-        Modal. modal('hide');
+    Modal.modal("hide");
 
-        $. ajax({
-            url: $(this). data('href'),
-            success: function (content) {
-                renderModal(content) || reloadContainer();
-            },
-            error: function (message) {
-                renderModal(message. responseText)
-            }
+    $.ajax({
+      url: $(this).data("href"),
+      success: function (content) {
+        renderModal(content) || reloadContainer();
+      },
+      error: function (message) {
+        renderModal(message.responseText);
+      },
+    });
+    return false;
+  }
+
+  function eventSubmit(e) {
+    e.preventDefault();
+    const form = $(this);
+    form.ajaxSubmit({
+      success: function (errors) {
+        if (errors.length === 0) {
+          Modal.modal("hide");
+          reloadContainer();
+        } else {
+          form.yiiActiveForm("updateMessages", errors, true);
+          form.trigger("hasError");
+        }
+      },
+      error: function (jqXHR) {
+        renderModal(jqXHR.responseText);
+      },
+    });
+    return false;
+  }
+  function RoundText(data) {
+    const key =data.id,
+      title =data.titleValue,
+      sta =data.firstValue,
+      swa =data.secondValue,
+      rax =data.thirdValue,
+      flip =data.flip;
+    var tpath = "";
+    const arcText = new ArcText(
+      title,
+      sta,
+      swa,
+      "125",
+      "125",
+      rax,
+      rax,
+      "1",
+      flip
+    );
+
+    tpath +=
+      `<g  key = ${key} fontSize='24' fontStyle='bold' fontFamily='Arial' fill='#345' stroke='none' position='absolute' fontWeight='bold' >`;
+      arcText
+        .f_svg_text_arc()
+        .map(([x, y, r, c]) => {
+          tpath += `<text  transform= "translate(${x}, ${y}) rotate(${r})"> <tspan lengthAdjust="spacing" className="rtext">{c}</tspan> </text>`;
         });
-        return false;
-    }
 
-    function eventSubmit(e) {
-        e. preventDefault();
-        const form = $(this);
-        form. ajaxSubmit({
-            success: function (errors) {
-                if (errors. length === 0) {
-                    Modal. modal('hide');
-                    reloadContainer();
-                } else {
-                    form. yiiActiveForm('updateMessages', errors, true);
-                    form. trigger('hasError');
-                }
-            },
-            error: function (jqXHR) {
-                renderModal(jqXHR. responseText);
-            }
-        });
-        return false;
-    }
-})(jQuery);        
+    tpath += "</g>  ";
+    return tpath;
+  }
+})(jQuery);

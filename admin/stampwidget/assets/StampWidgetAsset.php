@@ -12,6 +12,7 @@ class StampWidgetAsset extends AssetBundle
 		
 	   // 'js/raphael.min.js',
 		//'js/rotodrag.js',
+    'js/svgCanvas.js',
         'js/ArcText.js',
 		'js/svgtext.js',
       //  'js/stampwidget.js'
