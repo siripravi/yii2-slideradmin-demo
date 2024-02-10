@@ -65,14 +65,25 @@ use app\admin\stampwidget\helpers\AjaxCreate;
 ); ?>
 <script type="text/javascript">
 </script>
-
+<?php
+$options = [
+    'appName' => Yii::$app->name,
+    'baseUrl' => Yii::$app->request->baseUrl,
+    'language' => Yii::$app->language,
+  
+];
+$this->registerJs(
+    "var wscript = ".\yii\helpers\Json::encode($layers).";",
+    View::POS_HEAD,
+    'wscript'
+);
+?>
 <?php
 $session = Yii::$app->session;
 echo $session['wgt_key'];
 ?>
 <?php
-$script = "var wscript =" . $jslrs . ";";
-$this->registerJs($script, View::POS_HEAD);
+
 $lrs = Json::decode($jslrs);
 $items = [];
 /*foreach ($layers as $index => $layer){
@@ -86,20 +97,20 @@ echo "<pre>";print_r($layers);echo "<hr>";
     'enableAjaxValidation' => true,
     'validateOnChange' => true,
     'validateOnBlur' => false,
-    'layout' => 'horizontal',
+    'layout' => 'horizontal',*/
     'options' => [
-        'enctype' => 'multipart/form-data',
-        'id' => 'category-form',
-    ]*/
+       // 'enctype' => 'multipart/form-data',
+        'id' => 'dynamic-form111',
+    ]
 ]); ?>
 <?php
 
 foreach ($layers as $index => $layer){
 	//print_r($layer);
- $items[] = [
-	'label' => '#Text-'.$index,
-	'content' => $this->render("_tbForms", ['layer' => $layer, 'form' => $form,'index'=>$index,'types'=>$types]),
-   // 'active' => ($index == 0)
+ $items[] = [	
+	'label' => '#Text-'.$layer->id,
+	'content' => $this->render("_tbForms", ['layer' => $layer, 'form' => $form,'index'=>$layer->id,'types'=>$types]),
+    'options' => ['id' => $layer->id],
 ];
 }
 ?>
@@ -153,8 +164,3 @@ foreach ($layers as $index => $layer){
 </div>
 <!-- /.card -->
 <?php ActiveForm::end(); ?>
-<?php
-	$script = <<< JS
-		JS;
-	//$this->registerJs($script, View::POS_READY);
-?>

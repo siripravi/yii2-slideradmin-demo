@@ -2,25 +2,24 @@
 
 namespace app\admin\controllers;
 
-use app\admin\models\LoginForm;
 use Yii;
 use yii\filters\AccessControl;
+use yii\web\Controller;
+use yii\web\Response;
 use yii\filters\VerbFilter;
-use app\admin\components\BaseController;
-
-/**
- * Default controller for the `admin` module
- */
-class DefaultController extends BaseController
+use app\models\Layer;
+use app\models\LayerType;
+use yii\helpers\Json;
+class StampController extends Controller
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'only' => ['logout'],
                 'rules' => [
                     [
@@ -31,16 +30,33 @@ class DefaultController extends BaseController
                 ],
             ],
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'logout' => ['post'],
                 ],
-            ], 
+            ],
         ];
     }
 
     /**
-     * Renders the index view for the module
+     * {@inheritdoc}
+     */
+    public function actions()
+    {
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
+            ],
+            'captcha' => [
+                'class' => 'yii\captcha\CaptchaAction',
+                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+            ],
+        ];
+    }
+
+    /**
+     * Displays homepage.
+     *
      * @return string
      */
     public function actionIndex()
@@ -48,40 +64,7 @@ class DefaultController extends BaseController
         return $this->render('index');
     }
 
-    /**
-     * Login action.
-     *
-     * @return string
-     */
-    public function actionLogin()
-    {     
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        }
-        return $this->renderAjax('login', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Logout action.
-     *
-     * @return string
-     */
-    public function actionLogout()
-    {
-        Yii::$app->user->logout();
-
-        return $this->goHome();
-    }
-
-    
-    public function actionCreate(){
+      public function actionDesign(){
 		$model = new Layer();
 		$model->loadDefaultValues();
 		 if($model->load(Yii::$app->request->post())){

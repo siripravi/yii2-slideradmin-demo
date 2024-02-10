@@ -26,9 +26,8 @@ class StampWidget extends Widget
     {
         parent::init();
 		$session = Yii::$app->session;       
-		$this->key = !empty($session['wgt_key'])? $session['wgt_key'] : Layer::generateSecret();
-        $this->key = $session['wgt_key'];		
-		$session[$this->key] = !empty($session[$this->key])? $session[$this->key] : [];
+        $this->key = !empty($session->get('wgt_key')) ? $session->get('wgt_key') : Layer::generateSecret();
+		
     }
 
 	public function getLayers() {
@@ -38,24 +37,9 @@ class StampWidget extends Widget
                         where hash = '$this->key' ";
 
         $layers = Layer::findBySql($sql)->all();
-		
-		
-       /* $data = ArrayHelper::toArray($layers, [
-                    'app\admin\modules\image\models\Layer' => [
-                        'id',
-                        'text',
-                        'angleStart',
-						'font',
-						'fontSize',
-						'spacing',
-						'radius',
-                        'aname' => function ($layer) {
-                            return Layer::generateSecret();
-                        }
-                     
-                    ],
-        ]);*/           
-        return $layers;
+		//"id":232,"text":"Hello World","type_id":1,"angleStart":0,"angleEnd":0,"rotate":0,"centerX":125,"centerY":125,"font":"Arial","fontSize":16,"spacing":180,"radiusX":84,"radiusY":84,"pathText":""
+	 
+       return $layers;
     }
 	
     public function run()
@@ -66,7 +50,7 @@ class StampWidget extends Widget
         $imgs = Array(5);
         $imgids = Array();
         $layers = $this->getLayers();
-		$session[$this->key] = $layers;
+		$session->set($this->key, $layers);
 				
         $layerids = array_keys($layers);
         $lays= array_values($layers);
@@ -74,7 +58,26 @@ class StampWidget extends Widget
         $count = 0;
 		$textTypes = LayerType::find()->all();  
 		$typeList=ArrayHelper::map($textTypes,'id','name');
-        return $this->render('stamp', ['layers' => $layers, 'types' =>$typeList,'jslrs' => Json::encode($session[$this->key])]);
+        $data = ArrayHelper::map($layers, 'id',function($layer){
+           /* return [
+                "id"=>$layer->id,
+                "text"=>$layer->text,
+                "type_id"=>$layer->type_id,
+                "angleStart"=>$layer->angleStart,
+                 "angleEnd"=>$layer->angleEnd,
+                 "rotate"=>$layer->rotate,
+                 "centerX"=>$layer->centerX,
+                 "centerY"=>$layer->centerY,
+                 "font"=>$layer->font,
+                 "fontSize"=>$layer->fontSize,
+                 "spacing"=>$layer->spacing,
+                 "radiusX"=>$layer->radiusX,
+                 "radiusY"=>$layer->radiusY,
+                 "pathText"=>$layer->pathText
+            ];*/
+            return $layer;
+        });
+        return $this->render('stamp', ['layers' => $layers, 'types' =>$typeList,'jslrs' => Json::encode($layers)]);
     }
 	
 	
