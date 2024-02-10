@@ -6,16 +6,15 @@ use yii\web\AssetBundle;
 
 class StampWidgetAsset extends AssetBundle
 {
-    public $js = [
-	   // '//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js',
-		//'//unpkg.com/mithril/mithril.js',
-		'js/snap.svg-min.js',
-	    'js/jcanvas.min.js',
+    public $js = [	  
+		//'js/snap.svg-min.js',
+	  //  'js/jcanvas.min.js',
 		
-	    'js/raphael.min.js',
-		'js/rotodrag.js',
-		//'js/main.js',
-        'js/stampwidget.js'
+	   // 'js/raphael.min.js',
+		//'js/rotodrag.js',
+        'js/ArcText.js',
+		'js/svgtext.js',
+      //  'js/stampwidget.js'
     ];
 
     public $css = [

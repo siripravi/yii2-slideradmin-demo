@@ -73,3 +73,7 @@ foreach($layers as $index => $layer){
 	  </g>
 	</g> --> 
 	</svg>	
+
+	<svg id="RoundText" ref={rsvg} viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg' xmlnsXlink='http://www.w3.org/1999/xlink' width='250' height='250'>
+	
+	</svg>
