@@ -5,7 +5,7 @@
  * @license http://opensource.org/licenses/BSD-3-Clause
  */
 
-namespace app\stampwidget\assets;
+namespace app\admin\stampwidget\assets;
 
 use yii\web\AssetBundle;
 

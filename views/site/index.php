@@ -4,6 +4,7 @@
  *
  * Copyright (c) 2023 Your Company
  */
+
 /** @var yii\web\View $this */
 
 use siripravi\slideradmin\models\Slider;
@@ -11,6 +12,7 @@ use siripravi\slideradmin\models\SliderImage;
 use yii\bootstrap5\Html;
 use app\widgets\Carousel;
 use iutbay\yii2pnotify\PNotify;
+use app\admin\stampwidget\StampWidget;
 
 $this->title = 'My Yii Application';
 
@@ -33,12 +35,13 @@ foreach ($slides as $sld) {
 }
 ?>
 <?php
-echo PNotify::widget([
-    "title" => "Welcome to SliderAdmin Demo Site!",
-    "type" => "",
-    "text" => "Awesome Sliders based on Bootstrap 5",
-    //"notifications" => ["welcome"]
-]
+echo PNotify::widget(
+    [
+        "title" => "Welcome to SliderAdmin Demo Site!",
+        "type" => "",
+        "text" => "Awesome Sliders based on Bootstrap 5",
+        //"notifications" => ["welcome"]
+    ]
 );
 ?>
 <div class="site-index">
@@ -69,39 +72,41 @@ echo PNotify::widget([
     </div>
 
     <div class="body-content">
+        <h2>Create Your Stamp</h2>
+        <?= StampWidget::widget(); ?>
 
-        <div class="row">
-            <div class="col-lg-4 mb-3">
-                <h2>Heading</h2>
+    <div class="row">
+        <div class="col-lg-4 mb-3">
+            <h2>Heading</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur.</p>
 
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4 mb-3">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
+            <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
         </div>
+        <div class="col-lg-4 mb-3">
+            <h2>Heading</h2>
 
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur.</p>
+
+            <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
+        </div>
+        <div class="col-lg-4">
+            <h2>Heading</h2>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur.</p>
+
+            <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+        </div>
     </div>
+
+</div>
 </div>

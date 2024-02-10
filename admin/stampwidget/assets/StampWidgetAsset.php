@@ -1,7 +1,6 @@
 <?php
-// your_app/votewidget/VoteWidgetAsset.php
 
-namespace app\stampwidget\assets;
+namespace app\admin\stampwidget\assets;
 
 use yii\web\AssetBundle;
 
@@ -21,8 +20,8 @@ class StampWidgetAsset extends AssetBundle
 
     public $css = [
          // CDN lib
-        '//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css',
-		'//unicons.iconscout.com/release/v4.0.0/css/line.css',
+     //   '//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css',
+	//	'//unicons.iconscout.com/release/v4.0.0/css/line.css',
       //  'css/rich-text-editor.css',
 		//'css/demo.css',
 		//'css/stampwidget.css',
@@ -32,8 +31,8 @@ class StampWidgetAsset extends AssetBundle
     public $depends = [
         'yii\web\JqueryAsset',
 		'yii\widgets\PjaxAsset',
-        'yii\bootstrap\BootstrapPluginAsset',
-        'app\stampwidget\assets\AjaxFormAsset',
+      //  'yii\bootstrap\BootstrapPluginAsset',
+        'app\admin\stampwidget\assets\AjaxFormAsset',
     ];
 
     public function init()

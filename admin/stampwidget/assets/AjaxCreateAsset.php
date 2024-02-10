@@ -5,7 +5,7 @@
  * @license http://opensource.org/licenses/BSD-3-Clause
  */
 
-namespace app\stampwidget\assets;
+namespace app\admin\stampwidget\assets;
 
 use yii\web\AssetBundle;
 
@@ -16,7 +16,7 @@ use yii\web\AssetBundle;
  
 class AjaxCreateAsset extends AssetBundle
 {
-   // public $sourcePath = '@vendor/lav45/yii2-ajax-create/resource';
+   public $sourcePath = '@app/admin/stampwidget/assets/';
 
     public $js = [
         'js/main.js'
@@ -24,7 +24,7 @@ class AjaxCreateAsset extends AssetBundle
 
     public $depends = [
         'yii\widgets\PjaxAsset',
-        'yii\bootstrap\BootstrapPluginAsset',
-        'app\stampwidget\assets\AjaxFormAsset',
+       // 'yii\bootstrap\BootstrapPluginAsset',
+        'app\admin\stampwidget\assets\AjaxFormAsset',
     ];
 }

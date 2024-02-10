@@ -1,6 +1,6 @@
 <?php
 
-namespace app\stampwidget;
+namespace app\admin\stampwidget;
 use yii;
 use yii\base\Widget;
 use yii\helpers\Html;
@@ -12,8 +12,8 @@ use yii\helpers\Json;
 use yii\widgets\Pjax;
 
 use yii\bootstrap5\Modal;
-use app\stampwidget\assets\AjaxCreateAsset;
-use app\stampwidget\assets\StampWidgetAsset;
+use app\admin\stampwidget\assets\AjaxCreateAsset;
+use app\admin\stampwidget\assets\StampWidgetAsset;
 class StampWidget extends Widget
 {
     public $model;
@@ -45,7 +45,7 @@ class StampWidget extends Widget
 			
 		}*/
        /* $data = ArrayHelper::toArray($layers, [
-                    'app\modules\image\models\Layer' => [
+                    'app\admin\modules\image\models\Layer' => [
                         'id',
                         'text',
                         'angleStart',
@@ -80,7 +80,7 @@ class StampWidget extends Widget
 		
 		$textTypes = LayerType::find()->all();  
 		$typeList=ArrayHelper::map($textTypes,'id','name');
-        return $this->render('stamp', ['layers' => $layers, 'types' =>$typeList,'jslrs' => Json::encode($session[$this->key])]);
+        return $this->render('@app/admin/stampwidget/stamp', ['layers' => $layers, 'types' =>$typeList,'jslrs' => Json::encode($session[$this->key])]);
     }
 	
 	
@@ -90,7 +90,7 @@ class StampWidget extends Widget
 
     public function getViewPath()
     {
-        return '@app/views/';
+        return Yii::getAlias('@app/admin/views');
     }
 	
 	

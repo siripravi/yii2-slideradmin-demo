@@ -35,7 +35,10 @@
         "codeception/module-filesystem": "^3.0 || ^2.0 || ^1.1",
         "codeception/verify": "^3.0 || ^2.2",
         "symfony/browser-kit": "^6.0 || >=2.7 <=4.2.4",
-        "iutbay/yii2-pnotify":"~0.1.1"
+        "iutbay/yii2-pnotify":"~0.1.1",
+        "paragonie/constant_time_encoding": "^2.5",
+        "bower-asset/jquery-form": "4.*",
+        "kartik-v/yii2-widget-rangeinput": "*"
     },
     "config": {
         "allow-plugins": {

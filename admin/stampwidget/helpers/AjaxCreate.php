@@ -5,7 +5,7 @@
  * @license http://opensource.org/licenses/BSD-3-Clause
  */
 
-namespace app\stampwidget\helpers;
+namespace app\admin\stampwidget\helpers;
 
 use Yii;
 use yii\base\Widget;
@@ -13,8 +13,8 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\widgets\Pjax;
-use yii\bootstrap\Modal;
-use app\stampwidget\assets\AjaxCreateAsset;
+use yii\bootstrap5\Modal;
+use app\admin\stampwidget\assets\AjaxCreateAsset;
 
 
 /**

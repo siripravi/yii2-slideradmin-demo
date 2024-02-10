@@ -1,6 +1,6 @@
 <?php
 
-namespace app\stampwidget;
+namespace app\admin\stampwidget;
 use yii;
 use yii\base\Widget;
 use yii\helpers\Html;
@@ -12,8 +12,8 @@ use yii\helpers\Json;
 use yii\widgets\Pjax;
 
 use yii\bootstrap\Modal;
-use app\stampwidget\assets\StampWidgetAsset;
-//use app\stampwidget\assets\AjaxCreateAsset;
+use app\admin\stampwidget\assets\StampWidgetAsset;
+//use app\admin\stampwidget\assets\AjaxCreateAsset;
 
 class StampWidget extends Widget
 {
@@ -41,7 +41,7 @@ class StampWidget extends Widget
 		
 		
        /* $data = ArrayHelper::toArray($layers, [
-                    'app\modules\image\models\Layer' => [
+                    'app\admin\modules\image\models\Layer' => [
                         'id',
                         'text',
                         'angleStart',
@@ -84,6 +84,6 @@ class StampWidget extends Widget
 
     public function getViewPath()
     {
-        return '@app/stampwidget/views/';
+        return '@app/admin/stampwidget/views/';
     }
 }
