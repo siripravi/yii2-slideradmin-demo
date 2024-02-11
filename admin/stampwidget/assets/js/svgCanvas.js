@@ -23,8 +23,18 @@ class SvgEditor {
 		circle.setAttribute("fill", "none");
 		circle.setAttribute("stroke", "#2f69c2");
 		circle.setAttribute("stroke-width", "2");
-
+		
 		canvas.appendChild(circle);
+
+		let circle2 = document.createElementNS(svgns, "circle");
+
+		circle2.setAttribute("cx", "125");
+		circle2.setAttribute("cy", "125");
+		circle2.setAttribute("r", "89");		
+		circle2.setAttribute("fill", "none");
+		circle2.setAttribute("stroke", "#2f69c2");
+		circle2.setAttribute("stroke-width", "2");
+		canvas.appendChild(circle2);
 	}
 }
 SvgEditor.nextAutoIncrementedId = 0;

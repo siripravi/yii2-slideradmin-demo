@@ -19,7 +19,44 @@ use kartik\range\RangeInput;
 	<?php
 	echo $form->field($layer, "[$index]pathText")->label("")->hiddenInput(['class' => 'tpathtext visually-hidden']);
 	?>
-</div>
+	<?=
+	$form->field($layer, "[$index]font")->textInput(['class' => 'form-control input-sm tfont'])->label("Font");
+	?>
+	<?php
+	echo $form->field($layer, "[$index]fontSize")->label("Text Size")->widget(RangeInput::class, [
+		'size' => 'sm',
+		'options' => ['placeholder' => '', 'readonly' => true],
+		'html5Container' => ['style' => 'width:350px'],
+		'html5Options' => [
+			'min' => 16, 'max' => 48, 'step' => 1,
+			'class' => 'tfontsz'
+		],
+		//'addon' => ['append'=>['content'=>'px']]
+	]);
+
+	?>
+	<div class="row align-items-start">
+		<div class="col-sm-10">
+			<?php
+			echo $form->field($layer, "[$index]rotate")->label("Rotate")->widget(RangeInput::class, [
+				'size' => 'sm',
+				'html5Container' => ['style' => 'width:235px'],
+				'html5Options' => ['min' => 0, 'max' => 359, 'step' => 1, 'class' => 'trotate'],
+			]);
+			?>
+		</div>
+		<div class="row align-items-start">
+			<div class="col-sm-10">
+				<!--php 	 
+		echo $form->field($layer, "[$index]centerX")->label("Center-X")->widget(RangeInput::class(), [ 'size' => 'sm',			
+			'html5Container' => ['style' => 'width:235px'],
+			 'html5Options' => ['min'=>0, 'max'=>250, 'step'=>1,'class' => 'tcenterx'],
+     		]);		
+		?-->
+			</div>
+		</div>
+	</div>
+</div> <!-- end of visually hidden  -->
 <div class="row align-items-start">
 	<div class="col-sm-10">
 		<?=
@@ -27,28 +64,17 @@ use kartik\range\RangeInput;
 		?>
 	</div>
 </div>
-<?= $form->field($layer, "[$index]type_id")->dropDownList(
-	$types,
-	['prompt' => 'Please select', 'class' => 'form-control input-sm ttype']
-); ?>
-<?=
-$form->field($layer, "[$index]font")->textInput(['class' => 'form-control input-sm tfont'])->label("Font");
-?>
-<?php
-echo $form->field($layer, "[$index]fontSize")->label("Text Size")->widget(RangeInput::class, [
-	'size' => 'sm',
-	'options' => ['placeholder' => '', 'readonly' => true],
-	'html5Container' => ['style' => 'width:350px'],
-	'html5Options' => [
-		'min' => 16, 'max' => 48, 'step' => 1,
-		'class' => 'tfontsz'
-	],
-	//'addon' => ['append'=>['content'=>'px']]
-]);
+<div class="row align-items-start">
+	<div class="col-sm-10">
+		<?php
+		echo $form->field($layer, "[$index]angleStart")->label("Rotation")->widget(RangeInput::class, [
+			'size' => 'sm',
+			'html5Container' => ['style' => 'width:235px'],
+			'html5Options' => ['min' => 0, 'max' => 359, 'step' => 1, 'class' => 'tanglestart'],
 
-?>
-
-
+		]);  ?>
+	</div>
+</div>
 <div class="row align-items-start">
 	<div class="col-sm-10">
 		<?php
@@ -62,17 +88,6 @@ echo $form->field($layer, "[$index]fontSize")->label("Text Size")->widget(RangeI
 </div>
 <div class="row align-items-start">
 	<div class="col-sm-10">
-		<!--php 	 
-		echo $form->field($layer, "[$index]centerX")->label("Center-X")->widget(RangeInput::class(), [ 'size' => 'sm',			
-			'html5Container' => ['style' => 'width:235px'],
-			 'html5Options' => ['min'=>0, 'max'=>250, 'step'=>1,'class' => 'tcenterx'],
-     		]);		
-		?-->
-	</div>
-</div>
-
-<div class="row align-items-start">
-	<div class="col-sm-10">
 		<?php
 		echo $form->field($layer, "[$index]radiusX")->label("Radius-X")->widget(RangeInput::class, [
 			'size' => 'sm',
@@ -82,14 +97,12 @@ echo $form->field($layer, "[$index]fontSize")->label("Text Size")->widget(RangeI
 		?>
 	</div>
 </div>
+
 <div class="row align-items-start">
 	<div class="col-sm-10">
-		<?php
-		echo $form->field($layer, "[$index]rotate")->label("Rotate")->widget(RangeInput::class, [
-			'size' => 'sm',
-			'html5Container' => ['style' => 'width:235px'],
-			'html5Options' => ['min' => 0, 'max' => 359, 'step' => 1, 'class' => 'trotate'],
-		]);
-		?>
+		<?= $form->field($layer, "[$index]type_id")->dropDownList(
+			$types,
+			['prompt' => 'Please select', 'class' => 'form-control input-sm ttype']
+		); ?>
 	</div>
 </div>

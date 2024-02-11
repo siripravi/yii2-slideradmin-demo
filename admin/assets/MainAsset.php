@@ -7,6 +7,8 @@ class MainAsset extends \yii\web\AssetBundle
 
 	public $js = [
 		'assets/dist/app.min.js',
+		'assets/dist/ajaxcreate.js',
+		'@bower/jquery-form/dist/jquery.form.min.js'
 	];
 
 	public $css = [
@@ -18,6 +20,8 @@ class MainAsset extends \yii\web\AssetBundle
 
 	public $depends = [
 		\yii\web\JqueryAsset::class,
+		'yii\widgets\PjaxAsset',
+		//'app\admin\assets\AjaxFormAsset',
 	];
 
 	public function init()

@@ -1,11 +1,6 @@
 <?php
-/**
- * @link https://github.com/LAV45/yii2-ajax-create
- * @copyright Copyright (c) 2015 LAV45!
- * @license http://opensource.org/licenses/BSD-3-Clause
- */
 
-namespace app\admin\stampwidget\helpers;
+namespace app\admin\components;
 
 use Yii;
 use yii\base\Widget;
@@ -14,7 +9,7 @@ use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\widgets\Pjax;
 use yii\bootstrap5\Modal;
-use app\admin\stampwidget\assets\AjaxCreateAsset;
+use app\admin\assets\AjaxCreateAsset;
 
 
 /**
@@ -76,7 +71,7 @@ class AjaxCreate extends Widget
 
     protected function registerAsset()
     {
-        AjaxCreateAsset::register($this->getView());
+       // AjaxCreateAsset::register($this->getView());
     }
 
     public function registerScript()

@@ -73,7 +73,7 @@ echo PNotify::widget(
 
     <div class="body-content">
         <h2>Create Your Stamp</h2>
-       
+        <?= StampWidget::widget(); ?>
 
     <div class="row">
         <div class="col-lg-4 mb-3">
