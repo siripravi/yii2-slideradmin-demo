@@ -74,7 +74,7 @@ $config = [
                    ],
                    'nyiixta'=> [
                     'class' => 'siripravi\nyiixta\Module',
-                   ]               
+                   ],               
        'admin' => [
                'class' => 'app\admin\Module',
                'as access' => [
