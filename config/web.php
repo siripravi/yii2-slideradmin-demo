@@ -72,6 +72,9 @@ $config = [
         'slider' => [
                        'class' => 'siripravi\slideradmin\Module',
                    ],
+                   'nyiixta'=> [
+                    'class' => 'siripravi\nyiixta\Module',
+                   ]               
        'admin' => [
                'class' => 'app\admin\Module',
                'as access' => [
