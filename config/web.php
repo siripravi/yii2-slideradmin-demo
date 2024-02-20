@@ -91,9 +91,13 @@ $config = [
                'modules' => [
                      'slider' => [
                        'class' => 'siripravi\slideradmin\Module',
-                   ],                  
+                   ],
+                   'nyiixta'=> [
+                    'class' => 'siripravi\nyiixta\Module',
+                   ]              
               ],   
-       ]
+            ],
+           
    ],
     'params' => $params,
 ];

@@ -12,7 +12,7 @@ use siripravi\slideradmin\models\SliderImage;
 use yii\bootstrap5\Html;
 use app\widgets\Carousel;
 use iutbay\yii2pnotify\PNotify;
-use app\admin\stampwidget\StampWidget;
+
 
 $this->title = 'My Yii Application';
 
@@ -72,8 +72,7 @@ echo PNotify::widget(
     </div>
 
     <div class="body-content">
-        <h2>Create Your Stamp</h2>
-        <?= StampWidget::widget(); ?>
+   
 
     <div class="row">
         <div class="col-lg-4 mb-3">
