@@ -1,29 +1,34 @@
 <?php
-
-/* @var $this \yii\web\View */
-/* @var $content string */
-
 use yii\helpers\Html;
-use yii\bootstrap5\Breadcrumbs;
+use app\admin\assets\MainAsset;
+use yii\web\View;
 
-app\admin\assets\MainAsset::register($this);
-$this->registerCssFile('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+/* @var $this View */
+/* @var $content string */
+$themeMazer = MainAsset::register($this);
 
-$assetDir = "";
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
+    <head>
+        <meta charset="<?= Yii::$app->charset ?>">
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" name="viewport"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<?= Html::csrfMetaTags() ?>
-	<title><?= Html::encode($this->title) ?></title>
-	<?php $this->head() ?>
-</head>
+        <!-- <link rel="stylesheet" type="text/css"
+              href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700&display=swap"/> -->
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+        <!-- FOR CHART -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+        <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
 
-<body>
+        <?php $this->registerCsrfMetaTags() ?>
+        <title><?= Html::encode($this->title) ?></title>
+        <?php $this->head() ?>
+    </head>
+    <body>
 	<?php $this->beginBody() ?>
 	<div id="app">
 		<?= $this->render('mainy_sidebar') ?>
@@ -41,6 +46,5 @@ $assetDir = "";
 
 	<?php $this->endBody() ?>
 </body>
-
 </html>
 <?php $this->endPage() ?>

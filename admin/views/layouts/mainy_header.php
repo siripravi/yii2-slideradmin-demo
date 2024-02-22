@@ -1,50 +1,15 @@
 <?php
 
 use app\admin\assets\MainAsset;
+use deyraka\materialdashboard\widgets\Menu;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\bootstrap5\Nav;
-use yii\bootstrap5\NavBar;
 
 /**
  * @var yii\web\View $this
  */
 
 $themeMazer = MainAsset::register($this);
-
-$menuItems = []; //<iconify-icon icon="mdi:user-outline" style="color: #123;" width="20" rotate="0deg"></iconify-icon>
-if (Yii::$app->user->isGuest) {
-	$menuItems[] = [
-		'label' =>  Html::tag(
-			'span',
-			'<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2a2 2 0 0 0 2 2a2 2 0 0 0 2-2a2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1Z"></path></svg>',
-			["class" => "d-inline-block", "tabindex" => "0", "data-bs-toggle" => "popover", "data-bs-trigger" => "hover focus", "data-bs-content" => "click to login!"]
-		),
-		'encode' => false,
-		'url' => ['/site/login'],
-		'linkOptions' => ['alt' => Yii::t('app', 'Login'), 'class' => ''],
-	];
-} else {
-
-	$menuItems[] = [
-		'label' => '<div class="user-menu d-flex">' . Yii::$app->user->identity->username . '</div>',
-		'encode' => false,
-		'linkOptions' => ['alt' => Yii::t('app', 'Welcome'), 'data-bs-title' => Yii::t('app', 'Welcome'), 'class' => 'nav-text d-flex'],
-		'items' => [
-			[
-				'label' => Html::tag('span', Yii::t('app', 'Site Front')),
-				'url' => ['/'],
-				'encode' => false,
-				'linkOptions' => [
-					'data-method' => 'post',
-					'alt' => Yii::t('app', 'Frontend'),
-					'title' => Yii::t('app', 'Frontend'),
-				],
-			]
-		]
-	];
-}
-
 ?>
 
 <header class='mb-3'>
@@ -59,12 +24,95 @@ if (Yii::$app->user->isGuest) {
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ms-auto mb-lg-0">
+					<li class="nav-item dropdown me-1">
+						<a class="nav-link active dropdown-toggle text-gray-600" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+							<i class='bi bi-envelope bi-sub fs-4'></i>
+						</a>
+						<ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="dropdownMenuButton">
+							<li>
+								<h6 class="dropdown-header">Mail</h6>
+							</li>
+							<li><a class="dropdown-item" href="#">No new mail</a></li>
+						</ul>
+					</li>
 
-				<?= Nav::widget([
-					'options' => ['class' => "navbar-nav ms-auto mb-lg-0"],
-					'items' => $menuItems,
-				]); ?>
+					<li class="nav-item dropdown me-3">
+						<a class="nav-link active dropdown-toggle text-gray-600" href="#" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+							<i class='bi bi-bell bi-sub fs-4'></i>
+						</a>
+						<ul class="dropdown-menu dropdown-menu-end notification-dropdown shadow-lg" aria-labelledby="dropdownMenuButton">
+							<li class="dropdown-header">
+								<h6>Notifications</h6>
+							</li>
+							<li class="dropdown-item notification-item">
+								<a class="d-flex align-items-center" href="#">
+									<div class="notification-icon bg-primary">
+										<i class="bi bi-cart-check"></i>
+									</div>
+									<div class="notification-text ms-4">
+										<p class="notification-title font-bold">Successfully check out</p>
+										<p class="notification-subtitle font-thin text-sm">Order ID #256</p>
+									</div>
+								</a>
+							</li>
+							<li class="dropdown-item notification-item">
+								<a class="d-flex align-items-center" href="#">
+									<div class="notification-icon bg-success">
+										<i class="bi bi-file-earmark-check"></i>
+									</div>
+									<div class="notification-text ms-4">
+										<p class="notification-title font-bold">Homework submitted</p>
+										<p class="notification-subtitle font-thin text-sm">Algebra math homework</p>
+									</div>
+								</a>
+							</li>
+							<li>
+								<p class="text-center py-2 mb-0"><a href="#">See all notification</a></p>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+				<div class="dropdown">
+					<a href="#" data-bs-toggle="dropdown" aria-expanded="false">
+						<div class="user-menu d-flex">
+							<div class="user-name text-end me-3">
+								<h6 class="mb-0 text-gray-600">Anov Siradj</h6>
+								<p class="mb-0 text-sm text-gray-600">Administrator</p>
+							</div>
+							<div class="user-img d-flex align-items-center">
+								<div class="avatar avatar-md">
+
+									<img src="<?= "{$themeMazer->baseUrl}/images/avatar.png" ?>" alt="Avatar">
+								</div>
+							</div>
+						</div>
+					</a>
+
+					<ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="dropdownMenuButton" style="min-width: 11rem;">
+						<li>
+							<a class="dropdown-item" href="#">
+								<i class="icon-mid bi bi-person me-2"></i> My Profile
+							</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">
+								<i class="icon-mid bi bi-gear me-2"></i> Change Password
+							</a>
+						</li>
+						<li>
+							<hr class="dropdown-divider">
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">
+								<i class="icon-mid bi bi-box-arrow-left me-2"></i>
+								Logout
+							</a>
+						</li>
+					</ul>
+				</div>
 			</div>
-
+		</div>
 	</nav>
 </header>
