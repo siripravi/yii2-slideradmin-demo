@@ -49,7 +49,8 @@
         "kartik-v/yii2-editable": "dev-master",
         "kartik-v/yii2-widget-sidenav": "dev-master",
         "kartik-v/yii2-widget-select2": "dev-master",
-        "siripravi/nyiixta": "dev-main"
+        "siripravi/nyiixta": "dev-main",
+        "deyraka/yii2-material-dashboard": "v1.0.0-beta"  
     },
     "config": {
         "allow-plugins": {
