@@ -118,7 +118,7 @@ if (Yii::$app->user->isGuest) {
 ]); ?>
 <!--</div>  -->
 <div class="col-lg-auto text-center text-lg-left header-item-holder d-inline-flex ps-4" id="right-nav">
-    <?= CartIconWidget::widget(); ?>
+    <!--= CartIconWidget::widget(); ?-->
 </div>
 <div class="d-flex m-3 me-0" id="right-nav-x">
     <!--<button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i data-feather="search" class="text-primary"></i></button> -->

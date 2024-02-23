@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\userauth\models;
+namespace app\models;
 /*
  * This file is part of the Dektrium project.
  *

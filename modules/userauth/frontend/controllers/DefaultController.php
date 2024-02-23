@@ -2,7 +2,7 @@
 
 namespace app\modules\userauth\frontend\controllers;
 
-use siripravi\authhelper\controllers\SecurityController as MainController;
+use siripravi\userhelper\controllers\SecurityController as MainController;
 use luya\cms\menu\QueryOperatorFieldInterface;
 use luya\helpers\Url;
 use app\modules\userauth\frontend\Module;

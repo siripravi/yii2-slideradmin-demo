@@ -35,14 +35,14 @@ foreach ($slides as $sld) {
 }
 ?>
 <?php
-echo PNotify::widget(
+/* echo PNotify::widget(
     [
         "title" => "Welcome to SliderAdmin Demo Site!",
         "type" => "",
         "text" => "Awesome Sliders based on Bootstrap 5",
         //"notifications" => ["welcome"]
     ]
-);
+); */
 ?>
 <div class="site-index">
     <?php

@@ -2,80 +2,134 @@
 
 namespace app\models;
 
+use siripravi\userhelper\Finder;
+use siripravi\userhelper\helpers\Password;
 use Yii;
 use yii\base\Model;
+use siripravi\userhelper\traits\ModuleTrait;
 
 /**
- * LoginForm is the model behind the login form.
+ * This file is part of the Dektrium project.
  *
- * @property-read User|null $user
+ * (c) Dektrium project <http://github.com/dektrium/>
  *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * LoginForm get user's login and password, validates them and logs the user in. If user has been blocked, it adds
+ * an error to login form.
+ *
+ * @author Dmitry Erofeev <dmeroff@gmail.com>
  */
 class LoginForm extends Model
 {
-    public $username;
+    use ModuleTrait;
+
+    /** @var string User's email or username */
+    public $login;
+
+    /** @var string User's plain password */
     public $password;
-    public $rememberMe = true;
 
-    private $_user = false;
-
+    /** @var string Whether to remember the user */
+    public $rememberMe = false;
 
     /**
-     * @return array the validation rules.
+     * @var string
      */
+    public $returnUrl;
+
+    /** @var \siripravi\userhelper\models\User */
+    protected $user;
+
+    /** @var Finder */
+    protected $finder;
+
+    /**
+     * @param Finder $finder
+     * @param array  $config
+     */
+    public function __construct(Finder $finder, $config = [])
+    {
+        $this->finder = $finder;
+        $this->finder->userQuery = User::find();
+        parent::__construct($config);
+    }
+
+    /** @inheritdoc */
+    public function attributeLabels()
+    {
+        return [
+            'login'      => Yii::t('user', 'Email'),
+            'password'   => Yii::t('user', 'Password'),
+            'rememberMe' => Yii::t('user', 'Remember me next time'),
+        ];
+    }
+
+    /** @inheritdoc */
     public function rules()
     {
         return [
-            // username and password are both required
-            [['username', 'password'], 'required'],
-            // rememberMe must be a boolean value
-            ['rememberMe', 'boolean'],
-            // password is validated by validatePassword()
-            ['password', 'validatePassword'],
+            'requiredFields' => [['login', 'password'], 'required'],
+            'loginTrim' => ['login', 'trim'],
+            'loginPattern' => ['login', 'email'],
+            'passwordValidate' => [
+                'password',
+                function ($attribute) {
+                    if ($this->user === null || !Password::validate($this->password, $this->user->password_hash)) {
+                        $this->addError($attribute, Yii::t('user', 'Invalid email or password'));
+                    }
+                }
+            ],
+            'confirmationValidate' => [
+                'login',
+                function ($attribute) {
+                    if ($this->user !== null) {
+                        $confirmationRequired = $this->module->enableConfirmation
+                            && !$this->module->enableUnconfirmedLogin;
+                        if ($confirmationRequired && !$this->user->getIsConfirmed()) {
+                            $this->addError($attribute, Yii::t('user', 'You need to confirm your email address'));
+                        }
+                        if ($this->user->getIsBlocked()) {
+                            $this->addError($attribute, Yii::t('user', 'Your account has been blocked'));
+                        }
+                    }
+                }
+            ],
+            'rememberMe' => ['rememberMe', 'boolean'],
+            ['returnUrl', 'string']
         ];
     }
 
     /**
-     * Validates the password.
-     * This method serves as the inline validation for password.
+     * Validates form and logs the user in.
      *
-     * @param string $attribute the attribute currently being validated
-     * @param array $params the additional name-value pairs given in the rule
-     */
-    public function validatePassword($attribute, $params)
-    {
-        if (!$this->hasErrors()) {
-            $user = $this->getUser();
-
-            if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
-            }
-        }
-    }
-
-    /**
-     * Logs in a user using the provided username and password.
      * @return bool whether the user is logged in successfully
      */
     public function login()
     {
         if ($this->validate()) {
-            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
+            return Yii::$app->getUser()->login($this->user, $this->rememberMe ? $this->module->rememberFor : 0);
+        } else {
+            return false;
         }
-        return false;
     }
 
-    /**
-     * Finds user by [[username]]
-     *
-     * @return User|null
-     */
-    public function getUser()
+    /** @inheritdoc */
+    public function formName()
     {
-        if ($this->_user === false) {
-            $this->_user = User::findByUsername($this->username);
-        }
+        return 'login-form';
+    }
 
-        return $this->_user;
+    /** @inheritdoc */
+    public function beforeValidate()
+    {
+        if (parent::beforeValidate()) {
+            $this->user = $this->finder->findUserByEmail(trim($this->login));
+
+            return true;
+        } else {
+            return false;
+        }
     }
 }

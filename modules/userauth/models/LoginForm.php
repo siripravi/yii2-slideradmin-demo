@@ -2,11 +2,11 @@
 
 namespace app\modules\userauth\models;
 
-use siripravi\authhelper\Finder;
-use siripravi\authhelper\helpers\Password;
+use siripravi\userhelper\Finder;
+use siripravi\userhelper\helpers\Password;
 use Yii;
 use yii\base\Model;
-use siripravi\authhelper\traits\ModuleTrait;
+use siripravi\userhelper\traits\ModuleTrait;
 
 /**
  * This file is part of the Dektrium project.
@@ -39,7 +39,7 @@ class LoginForm extends Model
      */
     public $returnUrl;
 
-    /** @var \siripravi\authhelper\models\User */
+    /** @var \siripravi\userhelper\models\User */
     protected $user;
 
     /** @var Finder */

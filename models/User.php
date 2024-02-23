@@ -2,103 +2,176 @@
 
 namespace app\models;
 
-class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
+use app\models\Token;
+
+use siripravi\userhelper\helpers\Password;
+use siripravi\userhelper\models\User as BaseModel;
+
+/**
+ * @author Albert Gainutdinov <xalbert.einsteinx@gmail.com>
+ *
+ * @property-read UserMailer $mailer
+ */
+class User extends BaseModel
 {
-    public $id;
-    public $username;
-    public $password;
-    public $authKey;
-    public $accessToken;
+    //public $mailer;
 
-    private static $users = [
-        '100' => [
-            'id' => '100',
-            'username' => 'admin',
-            'password' => 'admin',
-            'authKey' => 'test100key',
-            'accessToken' => '100-token',
-        ],
-        '101' => [
-            'id' => '101',
-            'username' => 'demo',
-            'password' => 'demo',
-            'authKey' => 'test101key',
-            'accessToken' => '101-token',
-        ],
-    ];
-
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function findIdentity($id)
+    /** @inheritdoc */
+    public function afterSave($insert, $changedAttributes)
     {
-        return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
+    }
+
+    /** @inheritdoc */
+    public function attributeLabels()
+    {
+        return [
+            'username'          => \Yii::t('user', 'Username'),
+            'email'             => \Yii::t('user', 'Email'),
+            'registration_ip'   => \Yii::t('user', 'Registration ip'),
+            'unconfirmed_email' => \Yii::t('user', 'New email'),
+            'password'          => \Yii::t('user', 'Password'),
+            'created_at'        => \Yii::t('user', 'Registration time'),
+            'confirmed_at'      => \Yii::t('user', 'Confirmation time'),
+        ];
+    }
+
+    /** @inheritdoc */
+    public function rules()
+    {
+        return [
+            // username rules
+            'usernameRequired' => ['username', 'required', 'on' => ['register', 'create', 'connect', 'update']],
+            'usernameMatch'    => ['username', 'match', 'pattern' => static::$usernameRegexp],
+            'usernameLength'   => ['username', 'string', 'min' => 3, 'max' => 255],
+            'usernameUnique'   => [
+                'username',
+                'unique',
+                'message' => \Yii::t('user', 'This username has already been taken')
+            ],
+            'usernameTrim'     => ['username', 'trim'],
+
+            // email rules
+            [['email'], 'required'],
+            'emailPattern'  => ['email', 'email'],
+            'emailLength'   => ['email', 'string', 'max' => 255],
+            'emailUnique'   => [
+                'email',
+                'unique',
+                'message' => \Yii::t('user', 'This email address has already been taken')
+            ],
+            'emailTrim'     => ['email', 'trim'],
+
+            // user group
+            [['user_group_id'], 'exist', 'skipOnError' => true, 'targetClass' => UserGroup::class, 'targetAttribute' => ['user_group_id' => 'id']],
+
+            // password rules
+            'passwordRequired' => ['password', 'required', 'on' => ['register']],
+            'passwordLength'   => ['password', 'string', 'min' => 6, 'max' => 72, 'on' => ['register', 'create']],
+        ];
     }
 
     /**
-     * {@inheritdoc}
+     * This method is used to register new user account. If Module::enableConfirmation is set true, this method
+     * will generate new confirmation token and use mailer to send it to the user.
+     *
+     * @return integer | bool If true - returns user id
+     * @param null|string $return
      */
-    public static function findIdentityByAccessToken($token, $type = null)
+    public function register($return = null)
     {
-        foreach (self::$users as $user) {
-            if ($user['accessToken'] === $token) {
-                return new static($user);
-            }
+        if ($this->getIsNewRecord() == false) {
+            throw new \RuntimeException('Calling "' . __CLASS__ . '::' . __METHOD__ . '" on existing user');
         }
 
-        return null;
-    }
+        $transaction = $this->getDb()->beginTransaction();
 
-    /**
-     * Finds user by username
-     *
-     * @param string $username
-     * @return static|null
-     */
-    public static function findByUsername($username)
-    {
-        foreach (self::$users as $user) {
-            if (strcasecmp($user['username'], $username) === 0) {
-                return new static($user);
+        try {
+            $this->confirmed_at = $this->module->enableConfirmation ? null : time();
+            $this->password     = $this->module->enableGeneratingPassword ? Password::generate(8) : $this->password;
+
+            $this->trigger(self::BEFORE_REGISTER);
+
+            if (!$this->save()) {
+                $transaction->rollBack();
+                return false;
             }
+
+            if ($this->module->enableConfirmation) {
+                /** @var Token $token */
+                $token = \Yii::createObject(['class' => Token::class, 'type' => Token::TYPE_CONFIRMATION]);
+                if (!empty($return)) $token->returnUrl = $return;
+                $token->link('user', $this);
+            }
+
+            $this->mailer->sendWelcomeMessage($this, isset($token) ? $token : null);
+            $this->trigger(self::AFTER_REGISTER);
+
+            $transaction->commit();
+
+            return $this->id;
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+            die;
+            $transaction->rollBack();
+            \Yii::warning($e->getMessage());
+            return false;
         }
+    }
 
-        return null;
+    public function getPartnerStatus()
+    {
+        if (!\Yii::$app->user->isGuest) {
+            $partnerRequest = PartnerRequest::find()->where(['sender_id' => $this->id])->one();
+            if (!empty($partnerRequest)) {
+                return $partnerRequest->moderation_status;
+            } else return false;
+        } else return false;
     }
 
     /**
-     * {@inheritdoc}
+     * @return \yii\db\ActiveQuery
      */
-    public function getId()
+    public function getUserGroup()
     {
-        return $this->id;
+        return $this->hasOne(UserGroup::class, ['id' => 'user_group_id']);
     }
 
     /**
-     * {@inheritdoc}
+     * @return UserMailer
+     * @throws \yii\base\InvalidConfigException
      */
-    public function getAuthKey()
+    protected function getMailer()
     {
-        return $this->authKey;
+        return \Yii::$container->get(\siripravi\userhelper\Mailer::class);
+        //return \Yii::$app->mailer;
+    }
+
+    public function getUsername()
+    {
+        return $this->email;
+    }
+
+    public function getAvatarImage()
+    {
+        return \Yii::getAlias('@web/img/avatar/') . $this->id . '/' . $this->profile->avatar;
     }
 
     /**
-     * {@inheritdoc}
+     * Confirms the user by setting 'confirmed_at' field to current time.
      */
-    public function validateAuthKey($authKey)
+    public function confirm()
     {
-        return $this->authKey === $authKey;
+        $this->trigger(self::BEFORE_CONFIRM);
+        $result = (bool) $this->updateAttributes(['confirmed_at' => time()]);
+        $this->trigger(self::AFTER_CONFIRM);
+        return $result;
     }
 
     /**
-     * Validates password
-     *
-     * @param string $password password to validate
-     * @return bool if password provided is valid for current user
+     * @return \yii\db\ActiveQuery
      */
-    public function validatePassword($password)
+    public function getProfile()
     {
-        return $this->password === $password;
+        return $this->hasOne(get_class(\Yii::createObject(Profile::class)), ['user_id' => 'id']);
     }
 }

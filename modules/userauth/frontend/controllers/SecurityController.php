@@ -2,7 +2,7 @@
 
 namespace app\modules\userauth\frontend\controllers;
 
-use siripravi\authhelper\controllers\SecurityController as MainController;
+use siripravi\userhelper\controllers\SecurityController as MainController;
 use app\models\LoginForm;
 use siripravi\shopcart\models\Cart;
 use yii\helpers\Url;
@@ -16,7 +16,7 @@ class SecurityController extends MainController
 {
     public function getViewPath()
     {
-        return \Yii::getAlias('@userauthfrontend/views/user/security');
+        return \Yii::getAlias('@userauth/views/user/security');
     }
     /**
      * Displays the login page.

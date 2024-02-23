@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\userauth\models;
+namespace app\models;
 
 use app\models\User;
 use siripravi\userhelper\traits\ModuleTrait;
@@ -109,7 +109,7 @@ class Profile extends BaseProfile
     public function validateTimeZone($attribute, $params)
     {
         if (!in_array($this->$attribute, timezone_identifiers_list())) {
-            $this->addError($attribute, \Yii::t('app', 'Time zone is not valid'));
+            $this->addError($attribute, \Yii::t('user', 'Time zone is not valid'));
         }
     }
 

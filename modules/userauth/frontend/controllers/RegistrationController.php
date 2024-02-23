@@ -7,11 +7,11 @@ use app\models\RegistrationForm;
 use app\models\User;
 use app\models\Token;
 use app\components\events\UserRegistrationEvent;
-use siripravi\authhelper\Finder;
+use siripravi\userhelper\Finder;
 
-use siripravi\authhelper\models\ResendForm;
-use siripravi\authhelper\traits\AjaxValidationTrait;
-use siripravi\authhelper\traits\EventTrait;
+use siripravi\userhelper\models\ResendForm;
+use siripravi\userhelper\traits\AjaxValidationTrait;
+use siripravi\userhelper\traits\EventTrait;
 use yii\base\Exception;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -21,7 +21,7 @@ use yii\web\NotFoundHttpException;
  * RegistrationController is responsible for all registration process, which includes registration of a new account,
  * resending confirmation tokens, email confirmation and registration via social networks.
  *
- * @property \siripravi\authhelper\Module $module
+ * @property \siripravi\userhelper\Module $module
  * @method StaticPageBehavior registerStaticSeoData
  *
  * @author Dmitry Erofeev <dmeroff@gmail.com>
@@ -33,49 +33,49 @@ class RegistrationController extends Controller
 
     /**
      * Event is triggered after creating RegistrationForm class.
-     * Triggered with \siripravi\authhelper\events\FormEvent.
+     * Triggered with \siripravi\userhelper\events\FormEvent.
      */
     const EVENT_BEFORE_REGISTER = 'beforeRegister';
 
     /**
      * Event is triggered after successful registration.
-     * Triggered with \siripravi\authhelper\events\FormEvent.
+     * Triggered with \siripravi\userhelper\events\FormEvent.
      */
     const EVENT_AFTER_REGISTER = 'afterRegister';
 
     /**
      * Event is triggered before connecting user to social account.
-     * Triggered with \siripravi\authhelper\events\UserEvent.
+     * Triggered with \siripravi\userhelper\events\UserEvent.
      */
     const EVENT_BEFORE_CONNECT = 'beforeConnect';
 
     /**
      * Event is triggered after connecting user to social account.
-     * Triggered with \siripravi\authhelper\events\UserEvent.
+     * Triggered with \siripravi\userhelper\events\UserEvent.
      */
     const EVENT_AFTER_CONNECT = 'afterConnect';
 
     /**
      * Event is triggered before confirming user.
-     * Triggered with \siripravi\authhelper\events\UserEvent.
+     * Triggered with \siripravi\userhelper\events\UserEvent.
      */
     const EVENT_BEFORE_CONFIRM = 'beforeConfirm';
 
     /**
      * Event is triggered before confirming user.
-     * Triggered with \siripravi\authhelper\events\UserEvent.
+     * Triggered with \siripravi\userhelper\events\UserEvent.
      */
     const EVENT_AFTER_CONFIRM = 'afterConfirm';
 
     /**
      * Event is triggered after creating ResendForm class.
-     * Triggered with \siripravi\authhelper\events\FormEvent.
+     * Triggered with \siripravi\userhelper\events\FormEvent.
      */
     const EVENT_BEFORE_RESEND = 'beforeResend';
 
     /**
      * Event is triggered after successful resending of confirmation email.
-     * Triggered with \siripravi\authhelper\events\FormEvent.
+     * Triggered with \siripravi\userhelper\events\FormEvent.
      */
     const EVENT_AFTER_RESEND = 'afterResend';
 
@@ -112,7 +112,7 @@ class RegistrationController extends Controller
     }
     public function getViewPath()
     {
-        return \Yii::getAlias('@userauthfrontend/views/user/registration');
+        return \Yii::getAlias('@userauth/views/user/registration');
     }
 
     /**

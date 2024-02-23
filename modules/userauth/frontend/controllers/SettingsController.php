@@ -4,20 +4,20 @@ namespace app\modules\userauth\frontend\controllers;
 
 use app\modules\userauth\models\Profile;
 use app\modules\userauth\models\UserAddress;
-use siripravi\authhelper\controllers\SettingsController as BaseController;
+use siripravi\userhelper\controllers\SettingsController as BaseController;
 use yii\base\Exception;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
-use siripravi\authhelper\Finder;
+use siripravi\userhelper\Finder;
 use yii\helpers\Url;
 use yii\web\ForbiddenHttpException;
 
 /**
  * @author Albert Gainutdinov <xalbert.einsteinx@gmail.com>
- * This controller adds some actions for siripravi\authhelper\controllers\SettingsController
+ * This controller adds some actions for siripravi\userhelper\controllers\SettingsController
  * Its manage updating user settings (e.g. profile, email and password).
  *
- * @property \siripravi\authhelper\Module $module
+ * @property \siripravi\userhelper\Module $module
  *
  */
 class SettingsController extends BaseController
@@ -31,7 +31,7 @@ class SettingsController extends BaseController
     }
     public function getViewPath()
     {
-        return \Yii::getAlias('@userauthfrontend/views/user/settings');
+        return \Yii::getAlias('@userauth/views/user/settings');
     }
     /** @inheritdoc */
     public function behaviors()

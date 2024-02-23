@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\userauth\models;
+namespace app\models;
 
 use app\models\User;
 use siripravi\userhelper\helpers\Password;
@@ -86,7 +86,7 @@ class SettingsForm extends Model
             'currentPasswordRequired' => ['current_password', 'required'],
             'currentPasswordValidate' => ['current_password', function ($attr) {
                 if (!Password::validate($this->$attr, $this->user->password_hash)) {
-                    $this->addError($attr, Yii::t('app', 'Current password is not valid'));
+                    $this->addError($attr, Yii::t('user', 'Current password is not valid'));
                 }
             }],
         ];
@@ -96,10 +96,10 @@ class SettingsForm extends Model
     public function attributeLabels()
     {
         return [
-            'email'            => Yii::t('app', 'Email'),
-            //            'username'         => Yii::t('app', 'Username'),
-            'new_password'     => Yii::t('app', 'New password'),
-            'current_password' => Yii::t('app', 'Current password'),
+            'email'            => Yii::t('user', 'Email'),
+            //            'username'         => Yii::t('user', 'Username'),
+            'new_password'     => Yii::t('user', 'New password'),
+            'current_password' => Yii::t('user', 'Current password'),
         ];
     }
 
@@ -150,7 +150,7 @@ class SettingsForm extends Model
     protected function insecureEmailChange()
     {
         $this->user->email = $this->email;
-        Yii::$app->session->setFlash('success', Yii::t('app', 'Your email address has been changed'));
+        Yii::$app->session->setFlash('success', Yii::t('user', 'Your email address has been changed'));
     }
 
     /**
@@ -169,7 +169,7 @@ class SettingsForm extends Model
         $this->mailer->sendReconfirmationMessage($this->user, $token);
         Yii::$app->session->setFlash(
             'info',
-            Yii::t('app', 'A confirmation message has been sent to your new email address')
+            Yii::t('user', 'A confirmation message has been sent to your new email address')
         );
     }
 

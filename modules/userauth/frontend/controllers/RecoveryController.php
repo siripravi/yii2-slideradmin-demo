@@ -11,11 +11,11 @@
 namespace app\modules\userauth\frontend\controllers;
 
 use app\components\events\ResetPasswordEvent;
-use siripravi\authhelper\Finder;
+use siripravi\userhelper\Finder;
 use app\models\RecoveryForm;
 use app\models\Token;
-use siripravi\authhelper\traits\AjaxValidationTrait;
-use siripravi\authhelper\traits\EventTrait;
+use siripravi\userhelper\traits\AjaxValidationTrait;
+use siripravi\userhelper\traits\EventTrait;
 use yii\filters\AccessControl;
 use yii\helpers\Url;
 use yii\web\Controller;
@@ -24,7 +24,7 @@ use yii\web\NotFoundHttpException;
 /**
  * RecoveryController manages password recovery process.
  *
- * @property \siripravi\authhelper\Module $module
+ * @property \siripravi\userhelper\Module $module
  *
  * @author Dmitry Erofeev <dmeroff@gmail.com>
  */
@@ -35,37 +35,37 @@ class RecoveryController extends Controller
 
     /**
      * Event is triggered before requesting password reset.
-     * Triggered with \siripravi\authhelper\events\FormEvent.
+     * Triggered with \siripravi\userhelper\events\FormEvent.
      */
     const EVENT_BEFORE_REQUEST = 'beforeRequest';
 
     /**
      * Event is triggered after requesting password reset.
-     * Triggered with \siripravi\authhelper\events\FormEvent.
+     * Triggered with \siripravi\userhelper\events\FormEvent.
      */
     const EVENT_AFTER_REQUEST = 'afterRequest';
 
     /**
      * Event is triggered before validating recovery token.
-     * Triggered with \siripravi\authhelper\events\ResetPasswordEvent. May not have $form property set.
+     * Triggered with \siripravi\userhelper\events\ResetPasswordEvent. May not have $form property set.
      */
     const EVENT_BEFORE_TOKEN_VALIDATE = 'beforeTokenValidate';
 
     /**
      * Event is triggered after validating recovery token.
-     * Triggered with \siripravi\authhelper\events\ResetPasswordEvent. May not have $form property set.
+     * Triggered with \siripravi\userhelper\events\ResetPasswordEvent. May not have $form property set.
      */
     const EVENT_AFTER_TOKEN_VALIDATE = 'afterTokenValidate';
 
     /**
      * Event is triggered before resetting password.
-     * Triggered with \siripravi\authhelper\events\ResetPasswordEvent.
+     * Triggered with \siripravi\userhelper\events\ResetPasswordEvent.
      */
     const EVENT_BEFORE_RESET = 'beforeReset';
 
     /**
      * Event is triggered after resetting password.
-     * Triggered with \siripravi\authhelper\events\ResetPasswordEvent.
+     * Triggered with \siripravi\userhelper\events\ResetPasswordEvent.
      */
     const EVENT_AFTER_RESET = 'afterReset';
 
@@ -74,7 +74,7 @@ class RecoveryController extends Controller
 
     public function getViewPath()
     {
-        return \Yii::getAlias('@userauthfrontend/views/user/recovery');
+        return \Yii::getAlias('@userauth/views/user/recovery');
     }
     /**
      * @param string           $id
