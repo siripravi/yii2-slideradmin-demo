@@ -21,14 +21,14 @@ $config = [
             'class' => 'app\components\SiteRequest',
             'cookieValidationKey' => 'I-mmzHGFYAx9EnbueCBRo4W4HQBKHA_-',
         ],
-       
+
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-        'user' => [
+      /*  'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
-        ],
+        ],*/
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
@@ -55,9 +55,26 @@ $config = [
             'rules' => [
                 '' => 'site/index',
                 'image/<size:[0-9a-z\-]+>/<name>.<extension:[a-z]+>' => 'admin/image/default/index',
-               // 'file/<name>.<extension:[a-z]+>' => 'admin/image/default/file',                
+                // 'file/<name>.<extension:[a-z]+>' => 'admin/image/default/file',                
 
             ],
+        ],
+        'user' => [
+            'class' => 'yii\web\User',
+            'identityClass' => app\models\User::class,
+            'enableAutoLogin' => true,
+            'enableSession' => true,
+            'identityCookie' => [
+                'name'     => '_frontendIdentity',
+                'path'     => '/',
+                'httpOnly' => true,
+            ],
+            'on afterLogin' => function () {
+                //  if (Yii::$app->cart->saveToDataBase) Yii::$app->cart->transportSessionDataToDB();
+            },
+            'on afterConfirm' => function () {
+                //  if (Yii::$app->cart->saveToDataBase) Yii::$app->cart->transportSessionDataToDB();
+            },
         ],
         /*
         'urlManager' => [
@@ -70,38 +87,67 @@ $config = [
     ],
     'modules'  =>  [
         'slider' => [
-                       'class' => 'siripravi\slideradmin\Module',
-                   ],
-                   'nyiixta'=> [
-                    'class' => 'siripravi\nyiixta\Module',
-                   ],               
-       'admin' => [
-               'class' => 'app\admin\Module',
-               'as access' => [
-                   'class' => 'yii\filters\AccessControl',
-                   'rules' => [
-                       [
-                           'allow' => true,
-                           'roles' => ['@'],
-                       ],
-                       [
-                           'actions' => ['login', 'error'],
-                           'allow' => true,
-                           'roles' => ['?'],
-                       ],
-                   ],
-               ],
-               'modules' => [
-                     'slider' => [
-                       'class' => 'siripravi\slideradmin\Module',
-                   ],
-                   'nyiixta'=> [
-                    'class' => 'siripravi\nyiixta\Module',
-                   ]              
-              ],   
+            'class' => 'siripravi\slideradmin\Module',
+        ],
+        'nyiixta' => [
+            'class' => 'siripravi\nyiixta\Module',
+        ],
+        'user' => [
+            'class' => 'siripravi\authhelper\Module',
+         //   'layout' => '@app/themes/cakeBaker/views/layouts/auth',
+            'modelMap' => [
+                'RegistrationForm' => app\modules\userauth\models\RegistrationForm::class,
+                'RecoveryForm' => app\modules\userauth\models\RecoveryForm::class,
+                'LoginForm' => app\modules\userauth\models\LoginForm::class,
+                'SettingsForm' => app\modules\userauth\models\SettingsForm::class,
+                'Profile' => app\modules\userauth\models\Profile::class,
+                'User' => app\modules\userauth\models\User::class,
+
             ],
-           
-   ],
+            'controllerMap' => [
+                'registration' => app\modules\userauth\frontend\controllers\RegistrationController::class,
+                'settings' => app\modules\userauth\frontend\controllers\SettingsController::class,
+                'security' => app\modules\userauth\frontend\controllers\SecurityController::class,
+                'recovery' => app\modules\userauth\frontend\controllers\RecoveryController::class
+            ],
+            'mailer' => [
+                'viewPath' => '@app/views/user/mail',
+                'sender'                => 'no-reply@myhost.com', // or ['no-reply@myhost.com' => 'Sender name']
+                'welcomeSubject'        => 'Welcome subject',
+                'confirmationSubject'   => 'Confirmation subject',
+                'reconfirmationSubject' => 'Email change subject',
+                'recoverySubject'       => 'Recovery subject',
+            ],
+            // 'as frontend' => app\modules\user\filters\FrontendFilter::class,
+            // 'enableFlashMessages' => false
+        ],
+        'admin' => [
+            'class' => 'app\admin\Module',
+            'as access' => [
+                'class' => 'yii\filters\AccessControl',
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['login', 'error'],
+                        'allow' => true,
+                        'roles' => ['?'],
+                    ],
+                ],
+            ],
+            'modules' => [
+                'slider' => [
+                    'class' => 'siripravi\slideradmin\Module',
+                ],
+                'nyiixta' => [
+                    'class' => 'siripravi\nyiixta\Module',
+                ]
+            ],
+        ],
+
+    ],
     'params' => $params,
 ];
 
