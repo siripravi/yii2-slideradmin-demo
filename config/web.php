@@ -93,7 +93,7 @@ $config = [
             'class' => 'siripravi\nyiixta\Module',
         ],
         'user' => [
-            'class' => 'siripravi\authhelper\Module',
+            'class' => 'siripravi\userhelper\Module',
          //   'layout' => '@app/themes/cakeBaker/views/layouts/auth',
             'modelMap' => [
                 'RegistrationForm' => app\modules\userauth\models\RegistrationForm::class,
