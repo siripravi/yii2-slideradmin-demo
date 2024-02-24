@@ -2,8 +2,8 @@
 
 namespace app\modules\catalog\controllers\backend;
 
-use common\models\Page;
-use backend\models\PageSearch;
+use app\models\Page;
+use app\modules\catalog\models\backend\PageSearch;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

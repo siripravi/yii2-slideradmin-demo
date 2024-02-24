@@ -1,13 +1,13 @@
 <?php
 namespace app\modules\catalog\controllers\backend;
 
-use backend\models\UploadForm;
-use common\models\File;
+use app\modules\catalog\models\backend\UploadForm;
+use app\models\File;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use common\models\LoginForm;
+use app\models\LoginForm;
 use yii\web\UploadedFile;
 
 /**

@@ -2,8 +2,8 @@
 namespace app\modules\userauth\controllers\frontend;
 
 use siripravi\userhelper\controllers\SecurityController as MainController;
-use app\models\LoginForm;
-use siripravi\shopcart\models\Cart;
+
+use app\modules\userauth\models\LoginForm;
 use yii\helpers\Url;
 use yii\web\Response;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\userauth;
+namespace app\modules\catalog;
 
 /**
  * image module definition class
@@ -10,7 +10,7 @@ class Module extends \yii\base\Module
     /**
      * {@inheritdoc}
      */
-    public $controllerNamespace = 'app\modules\userauth\controllers\backend';
+    public $controllerNamespace = 'app\modules\catalog\controllers\backend';
     protected $_isBackend;
     
     /**
@@ -26,12 +26,12 @@ class Module extends \yii\base\Module
 			
 			]);
 		if ($this->getIsBackend() === true) { 
-          $this->controllerNamespace = 'app\modules\userauth\controllers\backend';
-		  $this->viewPath = '@app/modules/userauth/views/backend';
+          $this->controllerNamespace = 'app\modules\catalog\controllers\backend';
+		  $this->viewPath = '@app/modules/catalog/views/backend';
 		
         } else {
-            $this->controllerNamespace = 'app\modules\userauth\controllers\frontend';
-            $this->setViewPath('@app/modules/userauth/views/frontend');			
+            $this->controllerNamespace = 'app\modules\catalog\controllers\frontend';
+            $this->setViewPath('@app/modules/catalog/views/frontend');			
         }	
     }
       public function registerTranslations()
@@ -51,7 +51,7 @@ class Module extends \yii\base\Module
 
     public static function t($category, $message, $params = [], $language = null)
     {
-        return Yii::t('@siripravi/userauth/' . $category, $message, $params, $language);
+        return Yii::t('@siripravi/catalog/' . $category, $message, $params, $language);
     }
 	
 	/**
@@ -62,7 +62,7 @@ class Module extends \yii\base\Module
     public function getIsBackend()
     {
         if ($this->_isBackend === null) {
-            $this->_isBackend = strpos($this->controllerNamespace, 'backend') === false ? false : true;
+            $this->_isBackend = strpos($this->controllerNamespace, 'app') === false ? false : true;
         }
 
         return $this->_isBackend;

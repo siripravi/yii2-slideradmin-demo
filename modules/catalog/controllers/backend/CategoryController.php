@@ -2,8 +2,8 @@
 
 namespace app\modules\catalog\controllers\backend;
 
-use common\models\Category;
-use backend\models\CategorySearch;
+use app\models\Category;
+use app\modules\catalog\models\backend\CategorySearch;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

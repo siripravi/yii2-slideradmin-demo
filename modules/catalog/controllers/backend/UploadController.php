@@ -3,8 +3,8 @@
 namespace app\modules\catalog\controllers\backend;
 
 use Yii;
-use common\models\Upload;
-use backend\models\UploadSearch;
+use app\models\Upload;
+use app\modules\catalog\models\backend\UploadSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

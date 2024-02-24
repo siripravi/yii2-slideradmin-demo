@@ -56,7 +56,8 @@ $config = [
                 '' => 'site/index',
                 'image/<size:[0-9a-z\-]+>/<name>.<extension:[a-z]+>' => 'admin/image/default/index',
                 // 'file/<name>.<extension:[a-z]+>' => 'admin/image/default/file',                
-
+                $params['images_dir'] . '/<dir:[a-zA-Z0-9-_\/]+>/<action:(small|medium|large)>/<name:[a-zA-Z0-9-_\.]+>' => 'image/<action>',
+                $params['files_dir'] . '/<dir:[a-zA-Z0-9-_\/]+>/<name:[a-zA-Z0-9-_\.]+>' => 'file/open',
             ],
         ],
         'user' => [
@@ -92,6 +93,10 @@ $config = [
         'userauth' => [
             'class' => 'app\modules\userauth\Module',
         ],
+        'catalog' => [
+            'class' => 'app\modules\catalog\Module',
+        ],
+       
         'nyiixta' => [
             'class' => 'siripravi\nyiixta\Module',
         ],
@@ -146,7 +151,10 @@ $config = [
                 ],
                 'nyiixta' => [
                     'class' => 'siripravi\nyiixta\Module',
-                ]
+                ],
+                'catalog' => [
+                    'class' => 'app\modules\catalog\Module',
+                ],
             ],
         ],
 

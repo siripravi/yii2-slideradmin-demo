@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\userauth\controllers\frontend;
+namespace app\modules\catalog\controllers\frontend;
 
 use siripravi\userhelper\controllers\SecurityController as MainController;
 use luya\cms\menu\QueryOperatorFieldInterface;

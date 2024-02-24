@@ -2,9 +2,9 @@
 
 namespace app\modules\catalog\controllers\backend;
 
-use common\models\Model;
-use common\models\Product;
-use backend\models\ProductSearch;
+use app\models\Model;
+use app\models\Product;
+use app\modules\catalog\models\backend\ProductSearch;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
