@@ -25,13 +25,13 @@ class User extends BaseModel
     public function attributeLabels()
     {
         return [
-            'username'          => \Yii::t('app', 'Username'),
-            'email'             => \Yii::t('app', 'Email'),
-            'registration_ip'   => \Yii::t('app', 'Registration ip'),
-            'unconfirmed_email' => \Yii::t('app', 'New email'),
-            'password'          => \Yii::t('app', 'Password'),
-            'created_at'        => \Yii::t('app', 'Registration time'),
-            'confirmed_at'      => \Yii::t('app', 'Confirmation time'),
+            'username'          => \Yii::t('user', 'Username'),
+            'email'             => \Yii::t('user', 'Email'),
+            'registration_ip'   => \Yii::t('user', 'Registration ip'),
+            'unconfirmed_email' => \Yii::t('user', 'New email'),
+            'password'          => \Yii::t('user', 'Password'),
+            'created_at'        => \Yii::t('user', 'Registration time'),
+            'confirmed_at'      => \Yii::t('user', 'Confirmation time'),
         ];
     }
 
@@ -46,7 +46,7 @@ class User extends BaseModel
             'usernameUnique'   => [
                 'username',
                 'unique',
-                'message' => \Yii::t('app', 'This username has already been taken')
+                'message' => \Yii::t('user', 'This username has already been taken')
             ],
             'usernameTrim'     => ['username', 'trim'],
 
@@ -57,7 +57,7 @@ class User extends BaseModel
             'emailUnique'   => [
                 'email',
                 'unique',
-                'message' => \Yii::t('app', 'This email address has already been taken')
+                'message' => \Yii::t('user', 'This email address has already been taken')
             ],
             'emailTrim'     => ['email', 'trim'],
 
@@ -173,31 +173,5 @@ class User extends BaseModel
     public function getProfile()
     {
         return $this->hasOne(get_class(\Yii::createObject(Profile::class)), ['user_id' => 'id']);
-    }
-
-
-    /**
-     * @inheritdoc
-     */
-    public function ngRestAttributeTypes()
-    {
-        return [
-            'username' => 'text',
-            'password' => 'password',
-            'email' => 'text'
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function ngRestScopes()
-    {
-        return [
-            ['list', ['username', 'email']],
-            //  [['create'], ['username', 'password']],
-            [['update'], ['username']],
-            ['delete', false],
-        ];
     }
 }

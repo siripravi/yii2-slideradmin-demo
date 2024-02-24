@@ -40,7 +40,7 @@ class Profile extends BaseProfile
      */
     public static function tableName()
     {
-        return 'profile';
+        return '{{%profile}}';
     }
 
     /**
@@ -109,7 +109,7 @@ class Profile extends BaseProfile
     public function validateTimeZone($attribute, $params)
     {
         if (!in_array($this->$attribute, timezone_identifiers_list())) {
-            $this->addError($attribute, \Yii::t('app', 'Time zone is not valid'));
+            $this->addError($attribute, \Yii::t('user', 'Time zone is not valid'));
         }
     }
 

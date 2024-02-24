@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\userauth\frontend\controllers;
+namespace app\modules\userauth\controllers\frontend;
 
 use app\modules\userauth\models\Profile;
 use app\modules\userauth\models\UserAddress;
@@ -31,7 +31,7 @@ class SettingsController extends BaseController
     }
     public function getViewPath()
     {
-        return \Yii::getAlias('@userauth/views/user/settings');
+        return \Yii::getAlias('@app/modules/userauth/views/user/settings');
     }
     /** @inheritdoc */
     public function behaviors()

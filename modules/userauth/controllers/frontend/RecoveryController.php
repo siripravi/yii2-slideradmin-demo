@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace app\modules\userauth\frontend\controllers;
+ namespace app\modules\userauth\controllers\frontend;
 
 use app\components\events\ResetPasswordEvent;
 use siripravi\userhelper\Finder;
@@ -74,7 +74,7 @@ class RecoveryController extends Controller
 
     public function getViewPath()
     {
-        return \Yii::getAlias('@userauth/views/user/recovery');
+        return \Yii::getAlias('@app/modules/userauth/views/user/recovery');
     }
     /**
      * @param string           $id

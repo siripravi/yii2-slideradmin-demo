@@ -2,11 +2,9 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
-use siripravi\shopcart\widgets\CartWidget;
-use siripravi\shopcart\widgets\CartIconWidget;
 use yii\bootstrap5\Nav;
 use yii\bootstrap5\NavBar;
-use yii\bootstrap5\Popover;
+
 ?>
 <?php
 $menuItems = []; //<iconify-icon icon="mdi:user-outline" style="color: #123;" width="20" rotate="0deg"></iconify-icon>
@@ -16,7 +14,7 @@ $menuItems = []; //<iconify-icon icon="mdi:user-outline" style="color: #123;" wi
 <?php
 NavBar::begin([
     //'brandLabel' => '<span class="gaozhan-logo">'.Html::img("/image/site/nyxta.png",["style"=>"max-height: 80%; padding: 0;position:relative;"]).'</span>',
-    'brandLabel'  => '<h1 class="text-primary display-6">Cake Zone</h1>',
+    'brandLabel'  => '<h1 class="text-primary display-6">Yii2 Demo Application</h1>',
     'brandUrl' => Yii::$app->homeUrl,
     'options' => [
         'class' => 'navbar navbar-expand-lg',  // bg-dark',
@@ -127,6 +125,10 @@ if (Yii::$app->user->isGuest) {
         'options' => ['class' => "navbar-nav ms-auto mx-lg-auto py-0"],
         'items' => $userItems,
     ]); ?>
+    <?php echo '<ul class="nav-pills navbar-text d-inline-flex pe-4" role="group" me-auto" style="list-style:none;">'
+        .'<li class="nav-item border">'  .Html::a('<img src="/image/site/flag-us.svg">', Url::current(['lang' => 'en']), ['class' => ['p-2 nav-link', Yii::$app->language === 'en' ? 'border-success active' : 'border-none'], 'hreflang' => 'us-EN', 'rel' => 'nofollow']).'</li>'
+        .'<li class="nav-item border"> '   .Html::a('<img src="/image/site/flag-bha.svg">', Url::current(['lang' => 'hi']), ['class' => ['p-2 nav-link ', Yii::$app->language === 'hi' ? 'border-warning active' : 'border-none'], 'hreflang' => 'hi-IN', 'rel' => 'nofollow']).'</li>'
+                .'</ul>';  ?>
 </div>
 
 <?php NavBar::end();   ?>

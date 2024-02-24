@@ -30,22 +30,35 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 
 <body class="d-flex flex-column h-100" data-bs-theme="dark">
     <?php $this->beginBody() ?>
-
-    <header id="header">
+    <div style="margin-top:2px;">
+    <?php echo $this->render("_topNav"); ?>
+    </div>
+    <header id="header" style="margin-top:4px;">
         <?php
         NavBar::begin([
-            'brandLabel' => Yii::$app->name,
+            'brandLabel' => "",//Yii::$app->name,
             'brandUrl' => Yii::$app->homeUrl,
-            'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark fixed-top']
+            'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark']
         ]);
         echo Nav::widget([
-            'options' => ['class' => 'navbar-nav'],
+            'options' => ['class' => 'navbar-nav pull-right'],
             'items' => [
                 ['label' => 'Home', 'url' => ['/site/index']],
                 ['label' => 'About', 'url' => ['/site/about']],
                 ['label' => 'Contact', 'url' => ['/site/contact']],
-               
-                Yii::$app->user->isGuest
+                [
+                    'label' => Yii::t('app', 'Mega Menu'),
+                    //'url' => ['/category/index'],
+                    'url' => ["#"], //nav-link dropdown-toggle show 
+                    'options' => ['class' => 'has-megamenu'],
+                    //class="dropdown-toggle" data-toggle="dropdown"
+                    'linkOptions' => ['class' => 'dropdown-toggle', 'data-bs-auto-close' => 'outside', 'data-bs-toggle' => 'dropdown'],
+                    // 'active' => in_array(Yii::$app->controller->id, ['category', 'product']),
+                    'items' => [
+                        $this->render("_mega")
+                    ]
+                ],
+              /*  Yii::$app->user->isGuest
                     ? ['label' => 'Login', 'url' => ['/site/login']]
                     : '<li class="nav-item">'
                     . Html::beginForm(['/site/logout'])
@@ -54,20 +67,17 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                         ['class' => 'nav-link btn btn-link logout']
                     )
                     . Html::endForm()
-                    . '</li>',
+                    . '</li>', */
                     ['label' => 'Admin', 'url' => ['/admin']],             
             ]
         ]);
-        echo '<ul class="nav-pills navbar-text d-inline-flex pe-4" role="group" me-auto" style="list-style:none;">'
-        .'<li class="nav-item border">'  .Html::a('<img src="/image/site/flag-us.svg">', Url::current(['lang' => 'en']), ['class' => ['p-2 nav-link', Yii::$app->language === 'en' ? 'border-success active' : 'border-none'], 'hreflang' => 'us-EN', 'rel' => 'nofollow']).'</li>'
-        .'<li class="nav-item border"> '   .Html::a('<img src="/image/site/flag-bha.svg">', Url::current(['lang' => 'hi']), ['class' => ['p-2 nav-link ', Yii::$app->language === 'hi' ? 'border-warning active' : 'border-none'], 'hreflang' => 'hi-IN', 'rel' => 'nofollow']).'</li>'
-                .'</ul>';
-        NavBar::end();
+       
+        NavBar::end();  
         ?>
-       <?php echo $this->render("_headerNav"); ?>
+       
     </header>
-
-    <main id="main" class="flex-shrink-0" role="main" style="margin-top:123px;">
+   
+    <main id="main" class="flex-shrink-0" role="main" style="margin-top:13px;">
         <div class="container">
             <?php if (!empty($this->params['breadcrumbs'])) : ?>
                 <?= Breadcrumbs::widget(['links' => $this->params['breadcrumbs']]) ?>

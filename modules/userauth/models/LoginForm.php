@@ -60,9 +60,9 @@ class LoginForm extends Model
     public function attributeLabels()
     {
         return [
-            'login'      => Yii::t('app', 'Email'),
-            'password'   => Yii::t('app', 'Password'),
-            'rememberMe' => Yii::t('app', 'Remember me next time'),
+            'login'      => Yii::t('user', 'Email'),
+            'password'   => Yii::t('user', 'Password'),
+            'rememberMe' => Yii::t('user', 'Remember me next time'),
         ];
     }
 
@@ -77,7 +77,7 @@ class LoginForm extends Model
                 'password',
                 function ($attribute) {
                     if ($this->user === null || !Password::validate($this->password, $this->user->password_hash)) {
-                        $this->addError($attribute, Yii::t('app', 'Invalid email or password'));
+                        $this->addError($attribute, Yii::t('user', 'Invalid email or password'));
                     }
                 }
             ],
@@ -88,10 +88,10 @@ class LoginForm extends Model
                         $confirmationRequired = $this->module->enableConfirmation
                             && !$this->module->enableUnconfirmedLogin;
                         if ($confirmationRequired && !$this->user->getIsConfirmed()) {
-                            $this->addError($attribute, Yii::t('app', 'You need to confirm your email address'));
+                            $this->addError($attribute, Yii::t('user', 'You need to confirm your email address'));
                         }
                         if ($this->user->getIsBlocked()) {
-                            $this->addError($attribute, Yii::t('app', 'Your account has been blocked'));
+                            $this->addError($attribute, Yii::t('user', 'Your account has been blocked'));
                         }
                     }
                 }

@@ -61,7 +61,7 @@ $config = [
         ],
         'user' => [
             'class' => 'yii\web\User',
-            'identityClass' => app\models\User::class,
+            'identityClass' => app\modules\userauth\models\User::class,
             'enableAutoLogin' => true,
             'enableSession' => true,
             'identityCookie' => [
@@ -89,6 +89,9 @@ $config = [
         'slider' => [
             'class' => 'siripravi\slideradmin\Module',
         ],
+        'userauth' => [
+            'class' => 'app\modules\userauth\Module',
+        ],
         'nyiixta' => [
             'class' => 'siripravi\nyiixta\Module',
         ],
@@ -105,10 +108,10 @@ $config = [
 
             ],
             'controllerMap' => [
-                'registration' => app\modules\userauth\frontend\controllers\RegistrationController::class,
-                'settings' => app\modules\userauth\frontend\controllers\SettingsController::class,
-                'security' => app\modules\userauth\frontend\controllers\SecurityController::class,
-                'recovery' => app\modules\userauth\frontend\controllers\RecoveryController::class
+                'registration' => app\modules\userauth\controllers\frontend\RegistrationController::class,
+                'settings' => app\modules\userauth\controllers\frontend\SettingsController::class,
+                'security' => app\modules\userauth\controllers\frontend\SecurityController::class,
+                'recovery' => app\modules\userauth\controllers\frontend\RecoveryController::class
             ],
             'mailer' => [
                 'viewPath' => '@app/views/user/mail',

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\userauth\frontend\controllers;
+namespace app\modules\userauth\controllers\frontend;
 
 use app\models\Profile;
 use app\models\RegistrationForm;
@@ -112,7 +112,7 @@ class RegistrationController extends Controller
     }
     public function getViewPath()
     {
-        return \Yii::getAlias('@userauth/views/user/registration');
+        return \Yii::getAlias('@app/modules/userauth/views/user/registration');
     }
 
     /**

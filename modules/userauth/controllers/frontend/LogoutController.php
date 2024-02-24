@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\userauth\frontend\controllers;
+namespace app\modules\userauth\controllers\frontend;
 
 use luya\web\Controller;
 use Yii;

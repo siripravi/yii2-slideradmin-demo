@@ -81,7 +81,7 @@ if (Yii::$app->user->isGuest) {
         <div class="col-lg-4 text-center bg-success border-inner py-3">
             <div class="d-inline-flex align-items-center justify-content-center">
                 <a href="index.html" class="navbar-brand">
-                    <h1 class="m-0 text-uppercase text-white"><i class="fa fa-birthday-cake fs-1 text-dark me-3"></i>CakeZone</h1>
+                    <h1 class="m-0 text-uppercase text-white"><i class="fa fa-birthday-cake fs-1 text-dark me-3"></i>Yii2 Demo App</h1>
                 </a>
             </div>
         </div>

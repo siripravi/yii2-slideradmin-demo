@@ -1,6 +1,5 @@
 <?php
-
-namespace app\modules\userauth\frontend\controllers;
+namespace app\modules\userauth\controllers\frontend;
 
 use siripravi\userhelper\controllers\SecurityController as MainController;
 use app\models\LoginForm;
@@ -16,7 +15,7 @@ class SecurityController extends MainController
 {
     public function getViewPath()
     {
-        return \Yii::getAlias('@userauth/views/user/security');
+        return \Yii::getAlias('@app/modules/userauth/views/user/security');
     }
     /**
      * Displays the login page.
@@ -27,10 +26,10 @@ class SecurityController extends MainController
     {
 
         if (!\Yii::$app->user->isGuest) {
-            $cart = \Yii::$app->cart->getItems();
+           /* $cart = \Yii::$app->cart->getItems();
             if (!empty($cart))
                 \Yii::$app->getResponse()->redirect(Url::to(['/shopping-cart']));
-            else
+            else  */
                 \Yii::$app->getResponse()->redirect(Url::to([\Yii::$app->getHomeUrl()]));
         }
         $returnUrl =  \Yii::$app->request->referrer;
