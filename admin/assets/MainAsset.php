@@ -8,7 +8,8 @@ class MainAsset extends \yii\web\AssetBundle
 	public $js = [
 		'assets/dist/app.min.js',
 		'assets/dist/ajaxcreate.js',
-		'@bower/jquery-form/dist/jquery.form.min.js'
+		'@bower/jquery-form/dist/jquery.form.min.js',
+		//'assets/dist/sidebar.js'
 	];
 
 	public $css = [

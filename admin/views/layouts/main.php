@@ -31,7 +31,7 @@ $themeMazer = MainAsset::register($this);
     <body>
 	<?php $this->beginBody() ?>
 	<div id="app">
-		<?= $this->render('mainy_sidebar') ?>
+		<?= $this->render('sidebar') ?>
 
 		<div id="main" class='layout-navbar navbar-fixed'>
 			<?= $this->render('mainy_header') ?>

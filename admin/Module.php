@@ -34,9 +34,9 @@ class Module extends \yii\base\Module
               // 'deyraka\materialdashboard\web\MaterialDashboardAsset',
         
           ];*/
-        \Yii::$app->assetManager->bundles['yii\bootstrap5\BootstrapPluginAsset'] = [
+     /*   \Yii::$app->assetManager->bundles['yii\bootstrap5\BootstrapPluginAsset'] = [
             'js' => [],
-        ];
+        ];*/
         \Yii::$app->assetManager->bundles['yii\bootstrap5\BootstrapAsset'] = [
             'css' => [],
         ];
@@ -45,7 +45,7 @@ class Module extends \yii\base\Module
             'js' => [
                 'https://code.jquery.com/jquery-3.2.1.min.js',
             ],
-        ];
+        ]; 
 
         parent::init();
     }
