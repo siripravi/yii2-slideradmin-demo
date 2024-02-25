@@ -12,14 +12,14 @@ class MenuWidget extends Widget
 {
 
     public $activateParents = true;
-    public $defaultIconHtml = '<i class="fa fa-circle-o"></i> ';
+    public $defaultIconHtml = '<i class="bi bi-circle"></i> ';
     // public $options = ['class' => 'sidebar-menu', 'data-widget' => 'tree'];
 
     /**
      * @var string is prefix that will be added to $item['icon'] if it exist.
      * By default uses for Font Awesome (http://fontawesome.io/)
      */
-    public static $iconClassPrefix = 'fa fa-';
+    public static $iconClassPrefix = 'bi bi-';
 
     private $noDefaultAction;
     private $noDefaultRoute;
@@ -35,7 +35,7 @@ class MenuWidget extends Widget
 
     public $ulClass = "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion";
     public $ulId = "accordionSidebar";
-    public $liClass = "nav-item";
+    public $liClass = "sidebar-item";
     public $brandTemplate = '
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{url}">
             <div class="sidebar-brand-text mx-3">{appName}</div>
@@ -54,11 +54,11 @@ class MenuWidget extends Widget
     public $dividerTemplate = '<hr class="sidebar-divider">';
     public $sidebarHeadingTemplate = '<div class="sidebar-heading"><h6>{label}</h6></div>';
     public $menuTemplate = '<li class="{liClass}">{link}</li>';
-    public $linkTemplate = '<a class="nav-link" href="{url}" {linkOptions}><i class="{icon}"></i> <span>{label}</span></a>'; // not sure label use span or not
-    public $iconDefault = "fas fa-circle";
-    public $subMenuTemplate = '
+    public $linkTemplate = '<a class="sidebar-link" href="{url}" {linkOptions}><i class="{icon}"></i> <span class="ps-2">{label}</span></a>'; // not sure label use span or not
+    public $iconDefault = "bi bi-circle";
+    public $subMenuTemplate2 = '
         <li class="{liClass}">
-            <a class="nav-link {collapsed-arrow}" href="#" data-toggle="collapse" data-target="#collapse{key}" aria-expanded="true" aria-controls="collapse{key}">
+            <a class="sidebar-link {collapsed-arrow}" href="#" data-toggle="collapse" data-target="#collapse{key}" aria-expanded="true" aria-controls="collapse{key}">
                 <i class="{icon}"></i>
                 <span>{label}</span>
             </a>
@@ -70,9 +70,21 @@ class MenuWidget extends Widget
             </div>
         </li>
     ';
+    public $subMenuTemplate = '
+        <li class="{liClass} has-sub">
+            <a class="sidebar-link {collapsed-arrow}" href="#" data-toggle="collapse" data-target="#collapse{key}" aria-expanded="true" aria-controls="collapse{key}">
+                <i class="{icon}"></i>
+                <span>{label}</span>
+            </a>
+            <ul class="submenu"> 
+                {link} 
+            </ul>
+        </li>
+    ';
+   
     public $subMenuHeaderTemplate = '<h6 class="collapse-header">{subMenuTitle}</h6>';
-    public $subMenuLinkTemplate = '<a class="{subMenuClass}" href="{url} {linkOptions}"><i class="{icon}"></i> {label}</a>';
-    public $subMenuLinkClass = 'collapse-item';
+    public $subMenuLinkTemplate = '<li class="submenu-item"><a class="{subMenuClass}" href="{url} {linkOptions}"><i class="{icon}"></i> {label}</a></li>';
+    public $subMenuLinkClass = 'submenu-link';
     public $route;
 
 
