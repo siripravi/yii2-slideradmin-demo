@@ -1,40 +1,38 @@
 <?php
 
-namespace app\models;
-
+namespace app\modules\catalog\models;
 use app\behaviors\LanguageBehavior;
 use omgdef\multilingual\MultilingualQuery;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
-use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "brand".
+ * This is the model class for table "page".
  *
  * @property integer $id
  * @property string $slug
  * @property integer $created_at
  * @property integer $updated_at
- * @property integer $position
  * @property integer $enabled
- * 
+ *
  * Language
- * 
+ *
  * @property string $name
  * @property string $title
  * @property string $keywords
  * @property string $description
  * @property string $text
  */
-class Brand extends ActiveRecord
+class Page extends ActiveRecord
 {
+
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'brand';
+        return 'page';
     }
 
     /**
@@ -58,9 +56,7 @@ class Brand extends ActiveRecord
             [['slug', 'name', 'title', 'keywords'], 'string', 'max' => 255],
             [['description', 'text'], 'string'],
             [['slug', 'name', 'title', 'keywords', 'description', 'text'], 'trim'],
-            [['position'], 'integer'],
             [['enabled'], 'boolean'],
-            [['position'], 'default', 'value' => 0],
             [['enabled'], 'default', 'value' => 1],
         ];
     }
@@ -73,7 +69,6 @@ class Brand extends ActiveRecord
         return [
             'id' => 'ID',
             'slug' => 'Slug',
-            'position' => 'Position',
             'enabled' => 'Enabled',
             'name' => 'Name',
             'title' => 'Title',
@@ -81,13 +76,6 @@ class Brand extends ActiveRecord
             'description' => 'Description',
             'text' => 'Text'
         ];
-    }
-    
-    public static function list()
-    {
-        $list = static::find()->orderBy(['position' => SORT_ASC])->all();
-
-        return ArrayHelper::map($list, 'id', 'name');
     }
 
     /**

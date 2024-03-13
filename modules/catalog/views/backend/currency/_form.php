@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap5\ActiveForm;
-use app\models\Language;
+use app\modules\catalog\models\Language;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Currency */

@@ -1,40 +1,40 @@
 <?php
 
-namespace app\models;
+namespace app\modules\catalog\models;
 
 use app\behaviors\LanguageBehavior;
 use omgdef\multilingual\MultilingualQuery;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
+use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "category".
+ * This is the model class for table "brand".
  *
  * @property integer $id
- * @property integer $parent_id
  * @property string $slug
  * @property integer $created_at
  * @property integer $updated_at
  * @property integer $position
  * @property integer $enabled
- *
+ * 
  * Language
- *
+ * 
  * @property string $name
  * @property string $title
  * @property string $keywords
  * @property string $description
  * @property string $text
  */
-class Category extends ActiveRecord
+class Brand extends ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'category';
+        return 'brand';
     }
 
     /**
@@ -58,11 +58,10 @@ class Category extends ActiveRecord
             [['slug', 'name', 'title', 'keywords'], 'string', 'max' => 255],
             [['description', 'text'], 'string'],
             [['slug', 'name', 'title', 'keywords', 'description', 'text'], 'trim'],
-            [['parent_id', 'position'], 'integer'],
+            [['position'], 'integer'],
             [['enabled'], 'boolean'],
-            [['enabled'], 'default', 'value' => 1],
             [['position'], 'default', 'value' => 0],
-            [['parent_id'], 'default', 'value' => null],
+            [['enabled'], 'default', 'value' => 1],
         ];
     }
 
@@ -73,7 +72,6 @@ class Category extends ActiveRecord
     {
         return [
             'id' => 'ID',
-            'parent_id' => 'Parent ID',
             'slug' => 'Slug',
             'position' => 'Position',
             'enabled' => 'Enabled',
@@ -83,6 +81,13 @@ class Category extends ActiveRecord
             'description' => 'Description',
             'text' => 'Text'
         ];
+    }
+    
+    public static function list()
+    {
+        $list = static::find()->orderBy(['position' => SORT_ASC])->all();
+
+        return ArrayHelper::map($list, 'id', 'name');
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace app\modules\catalog\models;
 
 use app\behaviors\LanguageBehavior;
 use omgdef\multilingual\MultilingualQuery;
@@ -93,7 +93,7 @@ class Currency extends ActiveRecord
     {
         $list = static::find()->where(['enabled' => 1])->orderBy(['position' => SORT_ASC])->all();
         
-        return ArrayHelper::map($list, 'id', 'symbol');
+        return ArrayHelper::map($list, 'id', 'code');
     }
 
     /**

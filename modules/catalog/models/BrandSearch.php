@@ -1,15 +1,15 @@
 <?php
 
-namespace app\modules\catalog\models\backend;
+namespace app\modules\catalog\models;
 
-use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
+use app\modules\catalog\models\Brand;
 
 /**
- * UploadSearch represents the model behind the search form about `app\models\Upload`.
+ * BrandSearch represents the model behind the search form about `app\modules\catalog\models\Brand`.
  */
-class UploadSearch extends Upload
+class BrandSearch extends Brand
 {
     /**
      * @inheritdoc
@@ -17,8 +17,8 @@ class UploadSearch extends Upload
     public function rules()
     {
         return [
-            [['id', 'file_id', 'user_id', 'tmp', 'created_at'], 'integer'],
-            [['dir', 'name'], 'safe'],
+            [['id', 'enabled'], 'integer'],
+            [['slug', 'name', 'title', 'keywords', 'description', 'text'], 'safe'],
         ];
     }
 
@@ -40,7 +40,9 @@ class UploadSearch extends Upload
      */
     public function search($params)
     {
-        $query = Upload::find();
+        $query = Brand::find();
+
+        $query->joinWith('translation');
 
         // add conditions that should always apply here
 
@@ -59,13 +61,11 @@ class UploadSearch extends Upload
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'file_id' => $this->file_id,
-            'user_id' => $this->user_id,
-            'tmp' => $this->tmp,
-            'created_at' => $this->created_at,
+            'position' => $this->position,
+            'enabled' => $this->enabled,
         ]);
 
-        $query->andFilterWhere(['like', 'dir', $this->dir])
+        $query->andFilterWhere(['like', 'slug', $this->slug])
             ->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;

@@ -6,7 +6,7 @@ use Yii;
 
 // TODO: getLink() пришлось вынести в отдельный класс backend\models
 
-class Upload extends \app\models\Upload
+class Upload extends \app\modules\catalog\models\Upload
 {
     /**
      * @return string

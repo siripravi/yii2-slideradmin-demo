@@ -1,7 +1,7 @@
 <?php
 namespace app\modules\catalog\controllers\backend;
 
-use app\modules\catalog\models\backend\UploadForm;
+use app\modules\catalog\models\UploadForm;
 use app\models\File;
 use Yii;
 use yii\web\Controller;

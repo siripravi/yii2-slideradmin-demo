@@ -1,15 +1,15 @@
 <?php
 
-namespace app\modules\catalog\models\backend;
+namespace app\modules\catalog\models;
 
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Category;
 
 /**
- * CategorySearch represents the model behind the search form about `app\models\Category`.
+ * UploadSearch represents the model behind the search form about `app\modules\catalog\models\Upload`.
  */
-class CategorySearch extends Category
+class UploadSearch extends Upload
 {
     /**
      * @inheritdoc
@@ -17,8 +17,8 @@ class CategorySearch extends Category
     public function rules()
     {
         return [
-            [['id', 'parent_id', 'enabled'], 'integer'],
-            [['slug', 'name', 'title', 'keywords', 'description', 'text'], 'safe'],
+            [['id', 'file_id', 'user_id', 'tmp', 'created_at'], 'integer'],
+            [['dir', 'name'], 'safe'],
         ];
     }
 
@@ -40,9 +40,7 @@ class CategorySearch extends Category
      */
     public function search($params)
     {
-        $query = Category::find();
-
-        $query->joinWith('translation');
+        $query = Upload::find();
 
         // add conditions that should always apply here
 
@@ -61,11 +59,13 @@ class CategorySearch extends Category
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'parent_id' => $this->parent_id,
-            'enabled' => $this->enabled,
+            'file_id' => $this->file_id,
+            'user_id' => $this->user_id,
+            'tmp' => $this->tmp,
+            'created_at' => $this->created_at,
         ]);
 
-        $query->andFilterWhere(['like', 'slug', $this->slug])
+        $query->andFilterWhere(['like', 'dir', $this->dir])
             ->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;

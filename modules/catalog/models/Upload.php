@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace app\modules\catalog\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\helpers\Url;
-
+use app\models\User;
 /**
  * This is the model class for table "upload".
  *
@@ -73,10 +73,15 @@ class Upload extends ActiveRecord
     /**
      * @return string
      */
-    public function getLink()
+    public function getLinkOl()
     {
         // TODO: getLink() пришлось вынести в отдельный класс backend\models
         return Yii::$app->urlManager->createUrl(['file/open', 'dir' => $this->dir, 'name' => $this->name]);
+    }
+
+    public function getLink()
+    {
+        return Yii::$app->urlManager->createAbsoluteUrl(['file/open', 'dir' => $this->dir, 'name' => $this->name]);
     }
 
     /**

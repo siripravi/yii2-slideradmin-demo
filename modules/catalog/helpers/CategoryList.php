@@ -1,8 +1,8 @@
 <?php
 
-namespace app\helpers;
+namespace app\modules\catalog\helpers;
 
-use app\models\Category;
+use app\modules\catalog\models\Category;
 use yii\helpers\ArrayHelper;
 
 class CategoryList

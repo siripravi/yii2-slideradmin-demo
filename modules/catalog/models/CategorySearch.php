@@ -1,15 +1,15 @@
 <?php
 
-namespace app\modules\catalog\models\backend;
+namespace app\modules\catalog\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Page;
+use app\modules\catalog\models\Category;
 
 /**
- * PageSearch represents the model behind the search form about `app\models\Page`.
+ * CategorySearch represents the model behind the search form about `app\modules\catalog\models\Category`.
  */
-class PageSearch extends Page
+class CategorySearch extends Category
 {
     /**
      * @inheritdoc
@@ -17,7 +17,7 @@ class PageSearch extends Page
     public function rules()
     {
         return [
-            [['id', 'enabled'], 'integer'],
+            [['id', 'parent_id', 'enabled'], 'integer'],
             [['slug', 'name', 'title', 'keywords', 'description', 'text'], 'safe'],
         ];
     }
@@ -40,7 +40,7 @@ class PageSearch extends Page
      */
     public function search($params)
     {
-        $query = Page::find();
+        $query = Category::find();
 
         $query->joinWith('translation');
 
@@ -61,6 +61,7 @@ class PageSearch extends Page
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'parent_id' => $this->parent_id,
             'enabled' => $this->enabled,
         ]);
 

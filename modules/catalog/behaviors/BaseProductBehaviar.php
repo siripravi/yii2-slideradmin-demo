@@ -1,8 +1,8 @@
 <?php
 
-namespace app\behaviors;
+namespace app\modules\catalog\behaviors;
 
-use app\models\Language;
+use app\modules\catalog\models\Language;
 use app\models\Model;
 use app\models\Product;
 use yii\base\Behavior;

@@ -3,7 +3,7 @@
 use yii\bootstrap5\ActiveForm;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use app\models\Language;
+use app\modules\catalog\models\Language;
 /* @var $this yii\web\View */
 /* @var $model app\models\Product */
 /* @var $form yii\bootstrap5\ActiveForm */

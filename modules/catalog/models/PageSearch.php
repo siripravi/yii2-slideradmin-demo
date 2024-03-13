@@ -4,12 +4,12 @@ namespace app\modules\catalog\models\backend;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Brand;
+use app\modules\catalog\models\Page;
 
 /**
- * BrandSearch represents the model behind the search form about `app\models\Brand`.
+ * PageSearch represents the model behind the search form about `app\modules\catalog\models\Page`.
  */
-class BrandSearch extends Brand
+class PageSearch extends Page
 {
     /**
      * @inheritdoc
@@ -40,7 +40,7 @@ class BrandSearch extends Brand
      */
     public function search($params)
     {
-        $query = Brand::find();
+        $query = Page::find();
 
         $query->joinWith('translation');
 
@@ -61,7 +61,6 @@ class BrandSearch extends Brand
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'position' => $this->position,
             'enabled' => $this->enabled,
         ]);
 

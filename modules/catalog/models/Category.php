@@ -1,26 +1,24 @@
 <?php
 
-namespace app\models;
+namespace app\modules\catalog\models;
 
-use app\behaviors\LanguageBehavior;
+use app\modules\catalog\behaviors\LanguageBehavior;
 use omgdef\multilingual\MultilingualQuery;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 
 /**
- * This is the model class for table "model".
+ * This is the model class for table "category".
  *
  * @property integer $id
- * @property integer $brand_id
+ * @property integer $parent_id
  * @property string $slug
  * @property integer $created_at
  * @property integer $updated_at
  * @property integer $position
  * @property integer $enabled
  *
- * @property Product[] $products
- * 
  * Language
  *
  * @property string $name
@@ -29,14 +27,14 @@ use yii\db\ActiveRecord;
  * @property string $description
  * @property string $text
  */
-class Model extends ActiveRecord
+class Category extends ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'model';
+        return 'category';
     }
 
     /**
@@ -56,14 +54,15 @@ class Model extends ActiveRecord
     public function rules()
     {
         return [
-            [['brand_id', 'slug', 'name', 'title'], 'required'],
+            [['slug', 'name', 'title'], 'required'],
             [['slug', 'name', 'title', 'keywords'], 'string', 'max' => 255],
             [['description', 'text'], 'string'],
             [['slug', 'name', 'title', 'keywords', 'description', 'text'], 'trim'],
-            [['brand_id', 'position'], 'integer'],
-            [['position'], 'default', 'value' => 0],
-            [['enabled', 'brand_id'], 'default', 'value' => 1],
+            [['parent_id', 'position'], 'integer'],
             [['enabled'], 'boolean'],
+            [['enabled'], 'default', 'value' => 1],
+            [['position'], 'default', 'value' => 0],
+            [['parent_id'], 'default', 'value' => null],
         ];
     }
 
@@ -74,10 +73,8 @@ class Model extends ActiveRecord
     {
         return [
             'id' => 'ID',
-            'brand_id' => 'Brand ID',
+            'parent_id' => 'Parent ID',
             'slug' => 'Slug',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
             'position' => 'Position',
             'enabled' => 'Enabled',
             'name' => 'Name',
@@ -89,18 +86,25 @@ class Model extends ActiveRecord
     }
 
     /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getProducts()
-    {
-        return $this->hasMany(Product::className(), ['model_id' => 'id']);
-    }
-
-    /**
      * @return ActiveQuery
      */
     public static function find()
     {
         return new MultilingualQuery(get_called_class());
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeDelete()
+    {
+        if (parent::beforeDelete()) {
+            if ($this->id == 1) {
+                return false;
+            }
+            return true;
+        } else {
+            return false;
+        }
     }
 }

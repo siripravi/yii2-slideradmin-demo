@@ -1,7 +1,7 @@
 <?php
-namespace app\behaviors;
+namespace app\modules\catalog\behaviors;
 
-use app\models\Language;
+use app\modules\catalog\models\Language;
 use omgdef\multilingual\MultilingualBehavior;
 use yii\helpers\ArrayHelper;
 

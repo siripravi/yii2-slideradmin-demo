@@ -4,7 +4,7 @@ namespace app\modules\catalog\controllers\backend;
 
 use app\models\Model;
 use app\models\Product;
-use app\modules\catalog\models\backend\ProductSearch;
+use app\modules\catalog\models\ProductSearch;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

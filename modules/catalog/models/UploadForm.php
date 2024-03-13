@@ -6,10 +6,10 @@
  * Time: 14:30
  */
 
-namespace app\modules\catalog\models\backend;
+namespace app\modules\catalog\models;
 
-use app\models\File;
-use app\models\Upload;
+use app\modules\catalog\models\File;
+use app\modules\catalog\models\Upload;
 use Yii;
 use yii\base\Model;
 use yii\web\UploadedFile;

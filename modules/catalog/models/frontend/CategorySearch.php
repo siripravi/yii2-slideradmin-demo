@@ -4,10 +4,10 @@ namespace app\modules\catalog\models\frontend;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Category;
+use app\modules\catalog\models\Category;
 
 /**
- * CategorySearch represents the model behind the search form about `app\models\Category`.
+ * CategorySearch represents the model behind the search form about `app\modules\catalog\models\Category`.
  */
 class CategorySearch extends Category
 {
