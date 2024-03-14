@@ -2,7 +2,7 @@
 
 namespace app\modules\catalog\models;
 
-use app\behaviors\LanguageBehavior;
+use app\modules\catalog\behaviors\LanguageBehavior;
 use omgdef\multilingual\MultilingualQuery;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveQuery;

@@ -2,7 +2,7 @@
 
 namespace app\modules\catalog\controllers\backend;
 
-use app\models\Currency;
+use app\modules\catalog\models\Currency;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;

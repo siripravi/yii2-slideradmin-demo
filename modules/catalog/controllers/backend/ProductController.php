@@ -2,8 +2,8 @@
 
 namespace app\modules\catalog\controllers\backend;
 
-use app\models\Model;
-use app\models\Product;
+use app\modules\catalog\models\Model;
+use app\modules\catalog\models\Product;
 use app\modules\catalog\models\ProductSearch;
 use Yii;
 use yii\web\Controller;

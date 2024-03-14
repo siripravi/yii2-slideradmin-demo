@@ -1,0 +1,21 @@
+.nav-tabs .nav-item .nav-link {
+    background-color: #2b4a69;
+    color: #FFF;
+  }
+  
+  .nav-tabs .nav-item .nav-link.active {
+    color: #aebac7;
+  }
+  /*
+  .tab-content {
+    border: 1px solid #dee2e6;
+    border-top: transparent;
+    padding: 15px;
+  }*/
+  
+  .tab-content .tab-pane {
+    background-color: #FFF;
+    color: #304d6b;
+    min-height: 200px;
+    height: auto;
+  }

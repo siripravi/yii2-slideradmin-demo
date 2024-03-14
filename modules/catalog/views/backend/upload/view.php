@@ -11,9 +11,8 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Uploads'), 'url' => 
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="upload-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
+    <?php echo $model->getLink();  ?>
+ <?php echo Html::img($model->getLink());?>
     <p>
         <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [

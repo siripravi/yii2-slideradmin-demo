@@ -81,7 +81,7 @@ class Upload extends ActiveRecord
 
     public function getLink()
     {
-        return Yii::$app->urlManager->createAbsoluteUrl(['file/open', 'dir' => $this->dir, 'name' => $this->name]);
+        return Yii::$app->urlManager->createAbsoluteUrl(['admin/catalog/file/open', 'dir' => $this->dir, 'name' => $this->name]);
     }
 
     /**

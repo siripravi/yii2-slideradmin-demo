@@ -3,8 +3,8 @@
 namespace app\modules\catalog\behaviors;
 
 use app\modules\catalog\models\Language;
-use app\models\Model;
-use app\models\Product;
+use app\modules\catalog\models\Model;
+use app\modules\catalog\models\Product;
 use yii\base\Behavior;
 use yii\db\ActiveRecord;
 

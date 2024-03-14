@@ -15,6 +15,7 @@ class MainAsset extends \yii\web\AssetBundle
 	public $css = [
 		'app.min.css',
 		'app-dark.min.css',
+		'custom.css'
 	];
 
 	public $publishOptions = [];

@@ -2,8 +2,8 @@
 
 namespace app\modules\catalog\controllers\backend;
 
-use app\models\Brand;
-use app\modules\catalog\models\backend\BrandSearch;
+use app\modules\catalog\models\Brand;
+use app\modules\catalog\models\BrandSearch;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

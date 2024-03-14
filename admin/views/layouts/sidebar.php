@@ -56,7 +56,7 @@ JS) ?>
                     ],
                     [
                         'label' => 'Shop Catalog',
-                        // 'icon' => 'fa fa-menu', // optional, default to "fa fa-circle-o
+                         'icon' => 'bi bi-stack', // optional, default to "fa fa-circle-o
                         'visible' => true, // optional, default to true
                         // 'subMenuTitle' => 'Menu 2 Item', // optional only when have submenutitle, if not exist will not have subMenuTitle
                         'items' => [
@@ -68,12 +68,25 @@ JS) ?>
                                 'label' => 'Products',
                                 'url' => ['/admin/catalog/product'], //  Array format of Url to, will be not used if have an items
                             ],
+                            [
+                                'label' => 'Brands',
+                                'url' => ['/admin/catalog/brand'], //  Array format of Url to, will be not used if have an items
+                            ],
+                            [
+                                'label' => 'Currency',
+                                'url' => ['/admin/catalog/currency'], //  Array format of Url to, will be not used if have an items
+                            ],
+                            [
+                                'label' => 'Gallery',
+                                'url' => ['/admin/catalog/upload'], //  Array format of Url to, will be not used if have an items
+                            ],
                         ]
                     ],
 
                     [
                         'label' => 'Menu 3',
                         'visible' => true, // optional, default to true
+                        'icon' => 'bi bi-hexagon-fill',
                         // 'subMenuTitle' => 'Menu 3 Item', // optional only when have submenutitle, if not exist will not have subMenuTitle
                         'items' => [
                             [
