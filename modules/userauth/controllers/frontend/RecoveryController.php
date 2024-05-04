@@ -12,8 +12,8 @@
 
 use app\components\events\ResetPasswordEvent;
 use siripravi\userhelper\Finder;
-use app\models\RecoveryForm;
-use app\models\Token;
+use app\modules\userauth\models\RecoveryForm;
+use app\modules\userauth\models\Token;
 use siripravi\userhelper\traits\AjaxValidationTrait;
 use siripravi\userhelper\traits\EventTrait;
 use yii\filters\AccessControl;
