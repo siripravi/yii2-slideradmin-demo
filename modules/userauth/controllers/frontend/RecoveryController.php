@@ -10,9 +10,9 @@
 
  namespace app\modules\userauth\controllers\frontend;
 
-use app\components\events\ResetPasswordEvent;
+use siripravi\userhelper\events\ResetPasswordEvent;
 use siripravi\userhelper\Finder;
-use app\modules\userauth\models\RecoveryForm;
+use siripravi\userhelper\models\RecoveryForm;
 use app\modules\userauth\models\Token;
 use siripravi\userhelper\traits\AjaxValidationTrait;
 use siripravi\userhelper\traits\EventTrait;

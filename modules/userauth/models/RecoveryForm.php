@@ -11,7 +11,7 @@
 
 namespace app\modules\userauth\models;
 
-use app\models\User;
+use app\modules\userauth\models\User;
 use siripravi\userhelper\Finder;
 use siripravi\userhelper\Mailer;
 use yii\base\Model;
@@ -99,7 +99,7 @@ class RecoveryForm extends Model
      *
      * @return bool
      */
-    public function sendRecoveryMessage()
+ /*   public function sendRecoveryMessage()
     {
         if (!$this->validate()) {
             return false;
@@ -108,7 +108,7 @@ class RecoveryForm extends Model
         $user = $this->finder->findUserByEmail($this->email);
 
         if (!empty($user)) {
-            /** @var Token $token */
+           
             $token = \Yii::createObject([
                 'class' => Token::class(),
                 'user_id' => $user->id,
@@ -135,6 +135,41 @@ class RecoveryForm extends Model
             );
             return false;
         }
+    }*/
+
+    public function sendRecoveryMessage()
+    {
+        if (!$this->validate()) {
+            return false;
+        }
+
+        /** @var User $user */
+        $user = \Yii::createObject(User::class);
+        $user = $user::find(['email'=>$this->email])->one();
+
+        if ($user instanceof User) {
+            /** @var Token $token */
+            $token = \Yii::createObject([
+                'class' => Token::class,
+                'user_id' => $user->id,
+                'type' => Token::TYPE_RECOVERY,
+            ]);
+
+            if (!$token->save(false)) {
+                return false;
+            }
+
+            if (!$this->mailer->sendRecoveryMessage($user, $token)) {
+                return false;
+            }
+        }
+
+        \Yii::$app->session->setFlash(
+            'info',
+            \Yii::t('user', 'An email has been sent with instructions for resetting your password')
+        );
+
+        return true;
     }
 
     /**
