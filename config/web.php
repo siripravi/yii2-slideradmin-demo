@@ -87,6 +87,16 @@ $config = [
         */
     ],
     'modules'  =>  [
+        'api' => [
+            'class' => 'app\modules\apiDoc\Module',
+            'scanDir' => [
+                '@app/modules/v1/controllers',
+                '@app/modules/v1/models',
+            ],
+        ],
+        'v1' => [
+            'class' => 'app\modules\v1\Module',
+        ],
         'slider' => [
             'class' => 'siripravi\slideradmin\Module',
         ],
