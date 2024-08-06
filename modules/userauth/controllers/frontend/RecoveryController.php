@@ -115,7 +115,7 @@ class RecoveryController extends Controller
             if ($model->sendRecoveryMessage()) {
                 $title = \Yii::t('user', 'Recovery message sent');
                 $this->trigger(self::EVENT_AFTER_REQUEST, $event);
-                return $this->render('/message', [
+                return $this->render('//message', [
                     'title'  => $title ?? '',
                     'module' => $this->module,
                 ]);
@@ -155,7 +155,7 @@ class RecoveryController extends Controller
                 'danger',
                 \Yii::t('user', 'Recovery link is invalid or expired. Please try requesting a new one.')
             );
-            return $this->render('/message', [
+            return $this->render('//message', [
                 'title'  => \Yii::t('user', 'Invalid or expired link'),
                 'module' => $this->module,
             ]);

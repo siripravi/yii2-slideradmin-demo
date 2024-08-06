@@ -20,7 +20,8 @@
         "yiisoft/yii2-symfonymailer": "~2.0.3",
         "yiisoft/yii2-imagine": "~2.2.0",
         "siripravi/yii2-slideradmin": "^1.1.0",
-        "siripravi/yii2-image-gallery": "dev-main"
+        "siripravi/yii2-image-gallery": "dev-main",
+        
         
     },
     "require-dev": {
@@ -54,7 +55,8 @@
         "yiisoft/yii2-authclient": "~2.2.0",
         "bower-asset/startbootstrap-sb-admin-2": "~4.1.4",
         "zircote/swagger-php": "^4.0",
-        "swagger-api/swagger-ui": "^4.1"
+        "swagger-api/swagger-ui": "^4.1",
+        "monitorbacklinks/yii2-wordpress": "dev-master"
 
     },
     "config": {
