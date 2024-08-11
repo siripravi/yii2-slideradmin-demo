@@ -65,6 +65,12 @@ class SiteController extends Controller
         return $this->render('index.html');
     }
 
+    public function actionDemo()
+    {
+       // $this->layout = false;
+        return $this->render('demo');
+    }
+
     /**
      * Login action.
      *
