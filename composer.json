@@ -54,7 +54,8 @@
         "yiisoft/yii2-authclient": "~2.2.0",
         "bower-asset/startbootstrap-sb-admin-2": "~4.1.4",
         "zircote/swagger-php": "^4.0",
-        "swagger-api/swagger-ui": "^4.1"
+        "swagger-api/swagger-ui": "^4.1",
+         "tebe/yii2-inertia": "dev-master"
 
     },
     "config": {
