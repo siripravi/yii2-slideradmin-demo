@@ -1,0 +1,24 @@
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    //meta(name='viewport', content='width=device-width, initial-scale=1')
+
+    title My Site - #{title}
+    meta(name="description", content="")
+
+    block styles
+        link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,cyrillic', type='text/css')
+        link(rel='stylesheet', href='assets/css/bootstrap.min.css')
+        link(rel='stylesheet', href='assets/vendor/slick-carousel/slick/slick.css')
+        link(rel='stylesheet', href='assets/vendor/slick-carousel/slick/slick-theme.css')
+        link(rel='stylesheet', href='assets/vendor/fancybox/source/jquery.fancybox.css?v=2.1.5', media='screen')
+        link(rel='stylesheet', href='assets/css/main.min.css')
+        link(rel='stylesheet', href='/css/custom.min.css')
+
+    block scripts
+        script(src='assets/vendor/jquery/dist/jquery.min.js')
+        script(src='assets/vendor/bootstrap/dist/js/bootstrap.min.js')
+        script(src='assets/vendor/slick-carousel/slick/slick.min.js')
+        script(src='assets/vendor/fancybox/source/jquery.fancybox.pack.js?v=2.1.5')
+        script(src='/js/main.min.js')
+        script(src='/js/custom.min.js')

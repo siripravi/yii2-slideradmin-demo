@@ -38,7 +38,7 @@ use siripravi\ecommerce\models\Group;
       <div class="col-12 col-sm-4 col-md-3 py-4">
         <h5>Card</h5>
         <div class="card">
-          <img src="/img/featur-2.jpg" class="img-fluid" alt="image">
+          <img src="/build/img/product-8.jpg" class="img-fluid" alt="image">
           <div class="card-body">
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           </div>

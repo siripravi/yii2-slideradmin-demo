@@ -1,5 +1,5 @@
 <div class="row">
-            <h1 class="d-md-none">Cheatsheet Bootstrap 5.1.1</h1>
+            <h1 class="d-md-none">Cheatsheet Bootstrap 5.3.3</h1>
             <p class="lead d-md-none">Kitchen sink of Bootstrap components.</p>
             <div class="col-md-3 order-md-last">
                 <div class="accordion sticky-top mb-4" id="table-of-contents" style="top: 3rem;">

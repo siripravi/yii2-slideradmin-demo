@@ -1,0 +1,13 @@
+.links {
+    .item {
+        display: block;
+
+        @include mobile() {
+            padding: 0.25rem 0;
+        }
+
+        @include tablet() {
+            display: inline-block;
+        }
+    }
+}

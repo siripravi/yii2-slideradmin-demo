@@ -1,0 +1,38 @@
+/*@import "variables";
+@import "mixins";
+*/
+.b-map {
+	text-align: left;
+}
+
+#map {
+	height: 480px;
+	width: 100%;
+}
+
+.b-map__phone {
+	font-family: @font-family-primary;
+	font-weight: bold;
+	font-size: 26px;
+	color: #00a7fd;
+	text-align: left;
+	margin-bottom: 20px;
+}
+
+.b-map__text {
+	font-family: @font-family-primary;
+	font-size: 16px;
+	color: #080808;
+	text-align: left;
+
+	a {
+		display: inline-block;
+		margin: 10px 0;
+		color: #00a7fd;
+		text-decoration: underline;
+
+		&:hover, &:active, &:focus {
+			text-decoration: none;
+		}
+	}
+}

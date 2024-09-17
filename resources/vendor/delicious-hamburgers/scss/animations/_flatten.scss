@@ -1,0 +1,22 @@
+@use "sass:math";
+@import "../variables";
+
+@if index($hamburger-animations, flatten) {
+    .#{$hamburger-class-name}--flatten {
+        span.bar {
+            transition: transform math.div(0.3s, $hamburger-animation-speed) $hamburger-easing;
+        }
+
+        &.#{$hamburger-active-class-name} {
+            span.bar {
+                &:nth-child(1) {
+                    transform: translate3d(0, $hamburger-bar-spacing, 0);
+                }
+
+                &:nth-child(3) {
+                    transform: translate3d(0, -$hamburger-bar-spacing, 0);
+                }
+            }
+        }
+    }
+}

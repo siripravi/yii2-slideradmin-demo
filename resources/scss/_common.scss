@@ -1,0 +1,40 @@
+
+body{
+    height: 100dvh;
+    background-color: $bs-body-bg;
+}
+body {
+    --bs-body-font-family: var(--bs-font-sanserif);
+    --bs-body-line-height: 1.4;
+    --bs-body-bg: var(--bs-gray-100);
+  }
+:root {
+    --bc-h1-font-size: #{$h1-font-size};
+    --bc-h2-font-size: #{$h2-font-size};
+    --bc-h3-font-size: #{$h3-font-size};
+    --bc-h4-font-size: #{$h4-font-size};
+    --bc-h5-font-size: #{$h5-font-size};
+    --bc-h6-font-size: #{$h6-font-size};
+    --bc-spacer: #{$spacer};
+}
+
+.mw-md{
+    max-width: map-get($container-max-widths, 'md');
+    margin-left: auto;
+    margin-right: auto;
+}
+.mw-xs{
+    max-width: map-get($container-max-widths, 'xs');
+    margin-left: auto;
+    margin-right: auto;
+}
+.mw-sm{
+    max-width: map-get($container-max-widths, 'sm');
+    margin-left: auto;
+    margin-right: auto;
+}
+.mw-lg{
+    max-width: map-get($container-max-widths, 'lg');
+    margin-left: auto;
+    margin-right: auto;
+}

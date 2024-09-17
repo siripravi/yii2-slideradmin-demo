@@ -1,0 +1,44 @@
+{{ define "above-main" }}
+    <div class="columns is-multiline">
+        <div class="column is-8 is-offset-2 is-6-widescreen is-offset-3-widescreen has-text-centered">
+            <p class="is-size-6 is-size-5-desktop">Beautiful hamburger menu buttons animated in pure CSS, customisable with Sass.</p>
+        </div>
+        <div class="column is-12 has-text-centered">
+            <p class="links is-size-7-mobile is-size-6 mt-xl">
+                <span class="item">
+                    <i class="fab fa-github mr-xs"></i> <a href="https://github.com/kapoko/delicious-hamburgers" target="_blank" title="View on GitHub">View on GitHub</a>
+                </span>
+                <span class="middot is-hidden-mobile">&middot;</span>
+                <span class="item">
+                    <i class="fas fa-download mr-xs"></i> <a href="https://github.com/kapoko/delicious-hamburgers/releases" target="_blank">Download</a>
+                </span>
+                <span class="middot is-hidden-mobile">&middot;</span>
+                <span class="item">
+                    <i class="fas fa-code mr-xs"></i> Created by <a href="https://github.com/kapoko" target="_blank">kapoko</a>
+                </span>       
+            </p>
+        </div>
+    </div>
+{{ end }}
+
+{{ define "main" }}
+    <div class="columns mt-xl is-multiline is-mobile front-page">
+        <div class="column is-12 has-text-centered"> 
+            <h2 class="mb-md">The Menu</h2>
+        </div>
+        {{ with .Site.GetPage "/burger" }}
+            {{ range .Pages.ByWeight }}
+                {{ partial "frame.html" . }}
+            {{ end }}
+        {{ end }}
+        <div class="column is-12">
+            <p class="has-text-centered has-text-right-tablet">
+                <a href="#" id="go">Go</a>
+                <span class="middot">&middot;</span>
+                <a href="#" id="toggle-all">Toggle all</a>
+                <span class="middot">&middot;</span>
+                <a href="#" id="reset">Reset</a>
+            </p>
+        </div>
+    </div>
+{{ end }}

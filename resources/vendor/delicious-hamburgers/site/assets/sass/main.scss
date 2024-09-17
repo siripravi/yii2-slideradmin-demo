@@ -1,0 +1,56 @@
+@use "sass:math";
+
+@import 'variables';
+
+@import '../../../node_modules/bulma/bulma';
+@import '../../../node_modules/tippy.js/dist/tippy';
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;700&family=Fira+Mono&display=swap');
+
+@import 'global';
+@import 'spacing';
+@import 'typography';
+@import 'header';
+@import 'burger';
+@import 'footer';
+@import 'links';
+@import 'single-burger';
+
+.front-page {
+    $hamburger-class-name: 'front';
+    $hamburger-size: 60px;
+    @import '../../../scss/hamburgers';
+}
+
+.single-large {
+    $hamburger-class-name: 'single-large';
+    $hamburger-size: 240px;
+    $hamburger-thickness: 6px;
+    $hamburger-border-width: 6px;
+    $hamburger-padding: math.div($hamburger-size, 8);
+    $hamburger-border-color: #000;
+    $hamburger-padding: round(math.div($hamburger-size, 7));
+    $hamburger-bar-spacing: round(math.div($hamburger-size, 6));
+    @import '../../../scss/hamburgers';
+}
+
+.single-medium {
+    $hamburger-class-name: 'single-medium';
+    $hamburger-size: 100px;
+    $hamburger-thickness: 3px;
+    $hamburger-border-width: 3px;
+    $hamburger-border-color: #000;
+    $hamburger-padding: round(math.div($hamburger-size, 7));
+    $hamburger-bar-spacing: round(math.div($hamburger-size, 6));
+    @import '../../../scss/hamburgers';
+}
+
+.single-small {
+    $hamburger-class-name: 'single-small';
+    $hamburger-size: 42px;
+    $hamburger-thickness: 1px;
+    $hamburger-border-width: 1px;
+    $hamburger-border-color: #000;
+    $hamburger-padding: round(math.div($hamburger-size, 6));
+    $hamburger-bar-spacing: round(math.div($hamburger-size, 7));
+    @import '../../../scss/hamburgers';
+}

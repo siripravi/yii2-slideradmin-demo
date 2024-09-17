@@ -1,0 +1,21 @@
+languageCode = "en-us"
+title = "Delicious Hamburgers 🍔"
+staticDir = ["static", "dist"]
+disableKinds = ["taxonomy", "taxonomyTerm"]
+[params]
+    author = "kapoko"
+    description = "Beautifully animated Sass-powered hamburger menu buttons"
+
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = false
+    noClasses = true
+    style = "monokailight"
+    tabWidth = 4
+
+[build]
+  noJSConfigInAssets = true

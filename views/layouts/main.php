@@ -30,18 +30,18 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 
 <body class="d-flex flex-column h-100" data-bs-theme="light">
     <?php $this->beginBody() ?>
-    <div style="margin-top:2px;">
+    <div style="">
     <?php echo $this->render("_topNav"); ?>
     </div>
-    <header id="header" style="margin-top:4px;">
+    <header id="header" style="margin-top:0px;">
         <?php
         NavBar::begin([
             'brandLabel' => "",//Yii::$app->name,
             'brandUrl' => Yii::$app->homeUrl,
-            'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark']
+            'options' => ['class' => 'navbar-expand-md']
         ]);
         echo Nav::widget([
-            'options' => ['class' => 'navbar-nav pull-right'],
+            'options' => ['class' => 'navbar-nav mx-auto'],
             'items' => [
                 ['label' => 'Home', 'url' => ['/site/index']],
                 ['label' => 'About', 'url' => ['/site/about']],
@@ -50,7 +50,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                     'label' => Yii::t('app', 'Mega Menu'),
                     //'url' => ['/category/index'],
                     'url' => ["#"], //nav-link dropdown-toggle show 
-                    'options' => ['class' => 'has-megamenu'],
+                    'options' => ['class' => 'dropdown-mega has-megamenu'],
                     //class="dropdown-toggle" data-toggle="dropdown"
                     'linkOptions' => ['class' => 'dropdown-toggle', 'data-bs-auto-close' => 'outside', 'data-bs-toggle' => 'dropdown'],
                     // 'active' => in_array(Yii::$app->controller->id, ['category', 'product']),

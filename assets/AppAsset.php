@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -20,12 +21,12 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-       'css/main.css',
-      // 'css/main2.css',
-    'css/megamenu.css'
+        'build/lib/remix-fonts/remixicon.css',
+        'build/css/main.min.css',
+        // 'css/main2.css',
+        //'css/megamenu.css'
     ];
-    public $js = [
-    ];
+    public $js = [];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap5\BootstrapAsset'

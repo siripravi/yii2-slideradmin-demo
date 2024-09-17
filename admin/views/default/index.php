@@ -2,6 +2,7 @@
 
 use app\admin\components\AjaxCreate;
 use app\admin\widgets\CardWidget;
+//use app\admin\stampwidget\StampWidget;
 use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
@@ -30,7 +31,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
             ]);
             AjaxCreate::end();  */  ?>
 
-            <!--?= StampWidget::widget(); ?-->
+            <!--= StampWidget::widget(); ?-->
         </div>
     </div>
 

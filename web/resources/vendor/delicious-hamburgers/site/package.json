@@ -1,0 +1,46 @@
+{
+  "name": "delicious-hamburgers-site",
+  "version": "1.0.0",
+  "description": "Demo website for Delicious Hamburgers",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint src",
+    "start": "hugo server",
+    "build": "hugo -e development",
+    "build:production": "hugo -e production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kapoko/delicious-hamburgers.git"
+  },
+  "keywords": [
+    "hugo",
+    "gh-pages",
+    "delicious-hamburgers"
+  ],
+  "author": "kapoko <17455539+kapoko@users.noreply.github.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kapoko/delicious-hamburgers/issues"
+  },
+  "homepage": "https://github.com/kapoko/delicious-hamburgers#readme",
+  "browserslist": {
+    "production": [
+      "defaults"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version"
+    ]
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.4.0",
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-brands-svg-icons": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "bulma": "^0.9.4",
+    "github-buttons": "^2.27.0",
+    "delicious-hamburgers": "file:..",
+    "tippy.js": "^6.3.7"
+  }
+}

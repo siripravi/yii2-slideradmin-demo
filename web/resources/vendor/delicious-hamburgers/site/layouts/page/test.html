@@ -1,0 +1,28 @@
+{{ define "additional-css" }}
+    {{ $script := .Site.Data.manifest.test }}
+    {{ with $script.css }}
+        <link rel="stylesheet" type="text/css" href="{{ absURL . }}"> 
+    {{ end }}
+{{ end }}
+
+{{ define "main" }}
+    {{ range .Site.Data.test }}
+        {{ $currentConfig := . }}
+        <div class="columns">
+            <div class="column test-{{ $currentConfig }} has-text-centered">
+                <h3 class="mt-sm mb-md">{{ $currentConfig }}</h3>
+                {{ with $.Site.GetPage "/burger" }}
+                    {{ range .Pages.ByWeight }}
+                        <button title="{{ .Title }}" class="hamburger {{ $currentConfig }} {{ $currentConfig }}--{{ .Params.Class }}" type="button">
+                            <div class="inner">
+                                <span class="bar"></span>
+                                <span class="bar"></span>
+                                <span class="bar"></span>
+                            </div>
+                        </button>                      
+                    {{ end }}
+                {{ end }}
+            </div>
+        </div>
+    {{ end }}
+{{ end }}

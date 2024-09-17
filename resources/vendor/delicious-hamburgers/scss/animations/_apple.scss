@@ -1,0 +1,54 @@
+@use "sass:math";
+@import "../variables";
+
+@if index($hamburger-animations, apple) {
+    .#{$hamburger-class-name}--apple {
+        > .inner {
+            transition: transform math.div(0.5s, $hamburger-animation-speed) $hamburger-easing;
+        }
+
+        span.bar {
+            transition: transform math.div(0.35s, $hamburger-animation-speed) $hamburger-easing;
+
+            &:nth-child(1) {
+                top: 0;
+                transform: translate3d(0, math.round(-$hamburger-bar-spacing * 0.8), 0);
+            }
+
+            &:nth-child(2) {
+                top: 0;
+                transform: translate3d(0, math.round($hamburger-bar-spacing * 0.8), 0);
+            }
+
+            &:nth-child(3) {
+                display: none;
+            }
+        }
+
+        &.#{$hamburger-active-class-name} {
+            > .inner {
+                transform:
+                    rotate(90deg) translate3d(
+                        math.div($hamburger-thickness, 2),
+                        math.div(-$hamburger-thickness, 2),
+                        0
+                    );
+                transition: transform math.div(0.35s, $hamburger-animation-speed) $hamburger-easing;
+            }
+
+            span.bar {
+                transition:
+                    transform math.div(0.35s, $hamburger-animation-speed)
+                    $hamburger-easing math.div(0.15s, $hamburger-animation-speed);
+
+                &:nth-child(1) {
+                    transform: rotate(45deg) translate3d(0, 0, 0);
+                }
+
+                &:nth-child(2) {
+                    transform: rotate(-45deg) translate3d(0, 0, 0);
+                }
+            }
+        }
+    }
+}

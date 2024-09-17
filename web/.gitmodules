@@ -1,0 +1,9 @@
+[submodule "resources/vendor/bootstrap"]
+	path = resources/vendor/bootstrap
+	url = https://github.com/twbs/bootstrap.git
+[submodule "resources/vendor/bootswatch"]
+	path = resources/vendor/bootswatch
+	url = https://github.com/thomaspark/bootswatch.git
+[submodule "resources/vendor/delicious-hamburgers"]
+	path = resources/vendor/delicious-hamburgers
+	url = https://github.com/kapoko/delicious-hamburgers.git

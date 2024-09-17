@@ -1,0 +1,71 @@
+{
+  "name": "delicious-hamburgers",
+  "version": "1.2.3",
+  "description": "Beautiful SASS powered hamburger menu toggle buttons",
+  "main": "scss/hamburgers.scss",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kapoko/delicious-hamburgers.git"
+  },
+  "workspaces": [
+    "site"
+  ],
+  "scripts": {
+    "test": "npm run stylelint",
+    "build": "NODE_ENV=production webpack",
+    "build:site": "npm run -w site build:production",
+    "start": "run-p start:*",
+    "start:hamburgers": "NODE_ENV=development webpack --watch",
+    "start:site": "npm run -w site start",
+    "stylelint": "stylelint 'scss/**/*.scss'",
+    "stylelint:fix": "stylelint 'scss/**/*.scss' --fix",
+    "prepare": "run-s test build"
+  },
+  "keywords": [
+    "sass",
+    "css",
+    "hamburgers",
+    "menu",
+    "toggle",
+    "button"
+  ],
+  "author": "kapoko <17455539+kapoko@users.noreply.github.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kapoko/delicious-hamburgers/issues"
+  },
+  "homepage": "https://github.com/kapoko/delicious-hamburgers#readme",
+  "browserslist": {
+    "production": [
+      "defaults"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version"
+    ]
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard-scss",
+    "rules": {
+      "max-nesting-depth": 4
+    }
+  },
+  "devDependencies": {
+    "css-loader": "^6.7.3",
+    "css-minimizer-webpack-plugin": "^5.0.0",
+    "mini-css-extract-plugin": "^2.7.5",
+    "npm-run-all": "^4.1.5",
+    "postcss-loader": "^7.2.4",
+    "postcss-preset-env": "^8.3.2",
+    "sass": "^1.62.0",
+    "sass-loader": "^13.2.2",
+    "style-loader": "^3.3.2",
+    "stylelint": "^15.5.0",
+    "stylelint-config-sass-guidelines": "^10.0.0",
+    "stylelint-config-standard-scss": "^8.0.0",
+    "stylelint-webpack-plugin": "^4.1.1",
+    "webpack": "^5.79.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-remove-empty-scripts": "^1.0.3"
+  }
+}

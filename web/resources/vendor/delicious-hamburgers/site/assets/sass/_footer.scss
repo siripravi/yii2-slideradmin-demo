@@ -1,0 +1,14 @@
+.copyright {
+    vertical-align: top;
+    a.npm {
+        border-bottom: 0;
+    }
+}
+
+.github-button-wrap {
+    display: flex;
+    
+    > span {
+        display: inherit;
+    }
+}

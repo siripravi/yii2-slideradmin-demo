@@ -1,0 +1,17 @@
+
+@use './customStyling';
+
+// import components
+@use "./components/buttons";
+@use "./components/mixins";
+@use "./components/typography";
+
+// import sections
+@use "./sections/nav";
+@use "./sections/header";
+@use "./sections/about";
+@use "./sections/services";
+@use "./sections/portfolio";
+@use "./sections/testimonials";
+@use "./sections/contacts";
+@use "./sections/footer";

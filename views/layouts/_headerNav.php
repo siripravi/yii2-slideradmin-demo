@@ -18,7 +18,7 @@ NavBar::begin([
     'brandUrl' => Yii::$app->homeUrl,
     'options' => [
         'class' => 'navbar navbar-expand-lg',  // bg-dark',
-        'data-bs-theme' => 'dark',
+        'data-bs-theme' => 'light',
         // 'style' => "background-color: #46141c;border-radius: 230px 100px;"
     ],
 ]);  ?>
@@ -37,7 +37,7 @@ $menuItems = [
         'label' => Yii::t('app', 'Browse'),
         //'url' => ['/category/index'],
         'url' => ["#"], //nav-link dropdown-toggle show 
-        'options' => ['class' => 'has-megamenu'],
+        'options' => ['class' => 'has-megamenu dropdown-mega position-static'],
         //class="dropdown-toggle" data-toggle="dropdown"
         'linkOptions' => ['class' => 'dropdown-toggle', 'data-bs-auto-close' => 'outside', 'data-bs-toggle' => 'dropdown'],
         // 'active' => in_array(Yii::$app->controller->id, ['category', 'product']),

@@ -1,0 +1,149 @@
+.b-catalog {
+	background: #e1edf7;
+	text-align: center;
+}
+
+.b-catalog__header {
+	font-size: 43px;
+	color: #272424;
+	margin-top: 78px;
+}
+
+.b-catalog__list {
+	margin-top: 89px;
+	margin-bottom: 95px;
+}
+
+.b-catalog__item {
+	box-shadow: 0 0 3px rgba(0, 0, 0, .37);
+	background: #ffffff;
+
+	padding-bottom: 40px;
+
+	transition: all 80ms ease-out;
+
+	&:hover {
+		transform: translateY(-20px);
+	}
+}
+
+.b-catalog__item_1 {
+	.b-catalog__title {
+		background: #7ec52f;
+	}
+	.b-catalog__feature:before {
+		background-position: 0 center;
+	}
+	.b-catalog__button {
+		background: #7ec52f;
+		border-bottom-color: #659e26;
+
+		&:hover, &:active, &:focus {
+			background: #659e26;
+			border-bottom-color: #517e1e;
+		}
+	}
+}
+
+.b-catalog__item_2 {
+	.b-catalog__title {
+		background: #55bcc4;
+	}
+	.b-catalog__feature:before {
+		background-position: -11px center;
+	}
+	.b-catalog__button {
+		background: #55bcc4;
+		border-bottom-color: #44969d;
+
+		&:hover, &:active, &:focus {
+			background: #44969d;
+			border-bottom-color: #36787e;
+		}
+	}
+}
+
+.b-catalog__item_3 {
+	.b-catalog__title {
+		background: #9587ca;
+	}
+	.b-catalog__feature:before {
+		background-position: -22px center;
+	}
+	.b-catalog__button {
+		background: #9587ca;
+		border-bottom-color: #776ca2;
+
+		&:hover, &:active, &:focus {
+			background: #776ca2;
+			border-bottom-color: #5f5682;
+		}
+	}
+}
+
+.b-catalog__title {
+	line-height: 83px;
+	white-space: nowrap;
+	font-size: 26px;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+.b-catalog__features {
+	list-style: none;
+	margin: 25px 23px 0;
+	padding: 0;
+	text-align: left;
+	height: 170px;
+}
+
+.b-catalog__feature {
+	font-size: 18px;
+	color: #4d4d4d;
+	line-height: 1.2;
+	padding: 9px 0 10px 21px;
+
+	position: relative;
+
+	&:before {
+		position: absolute;
+		top: -2px;
+		left: 0;
+		width: 11px;
+		height: 40px;
+		background-image: url("../../assets/img/catalog-features.png");
+		background-repeat: no-repeat;
+
+		content: '';
+	}
+}
+
+.b-catalog__price {
+	color: #4d4d4d;
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 28px;
+
+	b {
+		font-size: 40px;
+	}
+}
+
+.b-catalog__button {
+	border-radius: 0;
+	border-bottom: 2px solid;
+
+	font-size: 18px;
+	font-weight: bold;
+	color: #ffffff;
+
+	padding: 14px 28px;
+
+	position: relative;
+
+	&:active {
+		margin-top: 2px;
+		border-bottom: none !important;
+		box-shadow: none;
+	}
+}

@@ -61,8 +61,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $this->layout = false;
-        return $this->render('index.html');
+        //$this->layout = false;
+        return $this->render('index');
     }
 
     public function actionDemo()
