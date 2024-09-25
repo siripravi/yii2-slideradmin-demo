@@ -1,5 +1,5 @@
 <?php
-
+require_once(__DIR__ . '/helpers.php');
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
@@ -11,6 +11,8 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+        '@storage' => '@app/storage',
+        '@storageUrl' => '@app/storage/web'
     ],
     'components' => [
         /*'request' => [
@@ -106,7 +108,9 @@ $config = [
         'catalog' => [
             'class' => 'app\modules\catalog\Module',
         ],
-       
+        'file' => [
+            'class' => 'app\modules\file\Module',
+        ],
         'nyiixta' => [
             'class' => 'siripravi\nyiixta\Module',
         ],
@@ -164,6 +168,9 @@ $config = [
                 ],
                 'catalog' => [
                     'class' => 'app\modules\catalog\Module',
+                ],
+                'file' => [
+                    'class' => 'app\modules\file\Module',
                 ],
             ],
         ],
