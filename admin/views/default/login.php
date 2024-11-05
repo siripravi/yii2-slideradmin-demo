@@ -1,5 +1,5 @@
 <?php
-//use app\admin\assets\AdminAsset;
+//use app\admin\AdminAsset;
 //use app\assets\CommonAsset;
 use yii\helpers\Html;
 use yii\bootstrap5\ActiveForm;

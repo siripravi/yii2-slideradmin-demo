@@ -1,7 +1,7 @@
 <?php
 // DemoPager.php
 namespace app\admin\components;
-use app\admin\assets\DemoPagerAsset;
+use app\admin\DemoPagerAsset;
 use Yii;
 use yii\helpers\Html;
 use yii\helpers\Json;

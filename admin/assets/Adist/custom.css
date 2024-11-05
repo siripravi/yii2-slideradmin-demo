@@ -1,5 +1,6 @@
+
 .nav-tabs .nav-item .nav-link {
-    background-color: #2b4a69;
+    background-color: #b6dfdc;
     color: #FFF;
   }
   
@@ -15,7 +16,7 @@
   
   .tab-content .tab-pane {
     background-color: #FFF;
-    color: #304d6b;
+    color: #f0e2cf;
     min-height: 200px;
     height: auto;
   }

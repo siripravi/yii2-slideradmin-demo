@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Html;
 \app\assets\AppAsset::register($this);
-\app\admin\assets\SbAdmin2Asset::register($this);
+\app\admin\SbAdmin2Asset::register($this);
 
 $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@bower/startbootstrap-sb-admin-2');
 ?>

@@ -7,8 +7,8 @@ use yii\helpers\Html;
 use yii\bootstrap5\Breadcrumbs;
 \hail812\adminlte3\assets\FontAwesomeAsset::register($this);
 //\hail812\adminlte3\assets\AdminLteAsset::register($this);
-//app\admin\assets\ThemeAsset::register($this);
-app\admin\assets\MainAsset::register($this);
+//app\admin\ThemeAsset::register($this);
+app\admin\MainAsset::register($this);
 $this->registerCssFile('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 $assetDir = "";//Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/adminlte/dist');

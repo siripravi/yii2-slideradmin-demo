@@ -1,7 +1,7 @@
 <?php
 
 use app\admin\widgets\MenuWidget;
-use app\admin\assets\MainAsset;
+use app\admin\MainAsset;
 ?>
 
 <?php

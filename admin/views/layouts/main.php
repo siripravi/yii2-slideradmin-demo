@@ -1,6 +1,6 @@
 <?php
 use yii\helpers\Html;
-use app\admin\assets\MainAsset;
+use app\admin\MainAsset;
 use yii\web\View;
 
 /* @var $this View */

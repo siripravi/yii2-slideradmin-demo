@@ -60,7 +60,6 @@ JS;
                 </ul>
             </div>
             <div class="card-body">
-             
                 <div class="tab-content mt-4">
                     <?php foreach (Language::suffixList() as $suffix => $name) : ?>
                         <div class="tab-pane fade<?php if (empty($suffix)) echo ' show active'; ?>" id="lang<?= $suffix ?>">

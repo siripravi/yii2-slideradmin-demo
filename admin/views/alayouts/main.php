@@ -6,7 +6,7 @@
 use yii\helpers\Html;
 use yii\bootstrap5\Breadcrumbs;
 
-app\admin\assets\MainAsset::register($this);
+app\admin\MainAsset::register($this);
 $this->registerCssFile('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 $assetDir = "";

@@ -9,7 +9,7 @@ use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\widgets\Pjax;
 use yii\bootstrap5\Modal;
-use app\admin\assets\AjaxCreateAsset;
+use app\admin\AjaxCreateAsset;
 
 
 /**
